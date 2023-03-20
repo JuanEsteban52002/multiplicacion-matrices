@@ -1,4 +1,4 @@
-package implementacion;
+package main;
 
 
 public class Algoritmo {

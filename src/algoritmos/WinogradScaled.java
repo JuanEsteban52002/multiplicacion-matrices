@@ -2,51 +2,90 @@ package algoritmos;
 
 public class WinogradScaled {
 
-	
+
 	//Metodo 8
-	public static int[][] winogradScaled(int[][] a, int[][] b) {
-		int m = a.length;
-		int n = b[0].length;
-		int r = a[0].length;
 
-		// Paso 1: Calcular las constantes para las operaciones de preprocesamiento
-		int[] rowFactor = new int[m];
-		int[] colFactor = new int[n];
-		for (int i = 0; i < m; i++) {
-			rowFactor[i] = a[i][0] * a[i][1];
-			for (int j = 2; j < r; j += 2) {
-				rowFactor[i] += a[i][j] * a[i][j + 1];
+	public static void winogradScaled(int[][] A, int[][] B, int[][] Result, int N, int P, int M) {
+		// Create scaled copies of A and B
+		int[][] CopyA = new int[N][P];
+		int[][] CopyB = new int[P][M];
+		// Scaling factors
+		int a = NormInf(A, N, P);
+		int b = NormInf(B, P, M);
+		int lambda = (int) Math.floor(0.5 + Math.log(b/a)/Math.log(4));
+		// Scaling
+		MultiplyWithScalar(A, CopyA, N, P, (int) Math.pow(2, lambda));
+		MultiplyWithScalar(B, CopyB, P, M, (int) Math.pow(2, -lambda));
+		// Using Winograd with scaled matrices
+		WinogradOriginal(CopyA, CopyB, Result, N, P, M);
+	}
+
+	public static int NormInf(int[][] A, int N, int M) {
+		int maxNorm = Integer.MIN_VALUE;
+		for (int i = 0; i < N; i++) {
+			int rowNorm = 0;
+			for (int j = 0; j < M; j++) {
+				rowNorm += Math.abs(A[i][j]);
+			}
+			maxNorm = Math.max(maxNorm, rowNorm);
+		}
+		return maxNorm;
+	}
+
+	public static void MultiplyWithScalar(int[][] A, int[][] Result, int N, int M, int scalar) {
+		for (int i = 0; i < N; i++) {
+			for (int j = 0; j < M; j++) {
+				Result[i][j] = A[i][j] * scalar;
 			}
 		}
-		for (int i = 0; i < n; i++) {
-			colFactor[i] = b[0][i] * b[1][i];
-			for (int j = 2; j < r; j += 2) {
-				colFactor[i] += b[j][i] * b[j + 1][i];
+	}
+
+	public static void WinogradOriginal(int[][] A, int[][] B, int[][] Result, int N, int P, int M) {
+		int i, j, k;
+		int[] rowFactor = new int[N];
+		int[] colFactor = new int[M];
+		// Calculate row and column factors
+		for (i = 0; i < N; i++) {
+			rowFactor[i] = 0;
+			for (k = 0; k < P - 1; k += 2) {
+				rowFactor[i] += A[i][k] * A[i][k + 1];
 			}
 		}
-
-		// Paso 2: Calcular la matriz intermedia
-		int[][] intermediate = new int[m][n];
-		for (int i = 0; i < m; i++) {
-			for (int j = 0; j < n; j++) {
-				intermediate[i][j] = -rowFactor[i] - colFactor[j];
-				for (int k = 0; k < r; k += 2) {
-					intermediate[i][j] += (a[i][k + 1] + b[k][j]) * (a[i][k] + b[k + 1][j]);
+		for (j = 0; j < M; j++) {
+			colFactor[j] = 0;
+			for (k = 0; k < P - 1; k += 2) {
+				colFactor[j] += B[k][j] * B[k + 1][j];
+			}
+		}
+		// Calculate result
+		for (i = 0; i < N; i++) {
+			for (j = 0; j < M; j++) {
+				Result[i][j] = -rowFactor[i] - colFactor[j];
+				for (k = 0; k < P - 1; k += 2) {
+					Result[i][j] += (A[i][k] + B[k + 1][j]) * (A[i][k + 1] + B[k][j]);
 				}
 			}
 		}
-
-		// Paso 3: Calcular la matriz resultante
-		int[][] result = new int[m][n];
-		for (int i = 0; i < m; i++) {
-			for (int j = 0; j < n; j++) {
-				result[i][j] = intermediate[i][j];
-				if (r % 2 != 0) {
-					result[i][j] += a[i][r - 1] * b[r - 1][j];
+		// If P is odd, add the last column of A to the result
+		if (P % 2 == 1) {
+			for (i = 0; i < N; i++) {
+				for (j = 0; j < M; j++) {
+					Result[i][j] += A[i][P - 1] * B[P - 1][j];
 				}
 			}
 		}
+		imprimirMatriz(Result);
+	}
 
-		return result;
+
+	private static void imprimirMatriz(int[][] matriz) {
+		// TODO Auto-generated method stub
+		for (int i = 0; i < matriz.length; i++) {
+			for (int j = 0; j < matriz[i].length; j++) {
+				System.out.print(matriz[i][j] + " ");
+			}
+			System.out.println();
+		}
+
 	}
 }

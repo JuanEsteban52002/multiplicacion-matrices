@@ -2,7 +2,7 @@ package algoritmos;
 
 public class WinogradOriginal {
 
-	public static int[][] winogradOriginal(int[][] A, int[][] B) {
+	public void winogradOriginal(int[][] A, int[][] B) {
 		int n = A.length;
 		int[][] C = new int[n][n];
 
@@ -31,7 +31,18 @@ public class WinogradOriginal {
 				C[i][j] = dotProduct - rowFactors[i] - colFactors[j] + A[i][n-1] * B[n-1][j];
 			}
 		}
-		return C;
+		imprimirMatriz(C);
 	}
+	private static void imprimirMatriz(int[][] matriz) {
+		// TODO Auto-generated method stub
+		for (int i = 0; i < matriz.length; i++) {
+			for (int j = 0; j < matriz[i].length; j++) {
+				System.out.print(matriz[i][j] + " ");
+			}
+			System.out.println();
+		}
+
+	}
+
 
 }

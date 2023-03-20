@@ -2,30 +2,69 @@ package algoritmos;
 
 public class NaivLoopUnrollingFour {
 
-	
-	public static int[][] naivLoopUnrollingFour(int[][] matrix1, int[][] matrix2) {
-		int rowsA = matrix1.length;
-		int colsA = matrix1[0].length;
-		int colsB = matrix2[0].length;
 
-		int[][] result = new int[rowsA][colsB];
-
-		for (int i = 0; i < rowsA; i++) {
-			for (int j = 0; j < colsB; j += 4) {
-				int sum1 = 0, sum2 = 0, sum3 = 0, sum4 = 0;
-				for (int k = 0; k < colsA; k++) {
-					sum1 += matrix1[i][k] * matrix2[k][j];
-					sum2 += matrix1[i][k] * matrix2[k][j + 1];
-					sum3 += matrix1[i][k] * matrix2[k][j + 2];
-					sum4 += matrix1[i][k] * matrix2[k][j + 3];
+	public static void naivLoopUnrollingFour(int[][] A, int[][] B, int[][] Result, int N, int P, int M) {
+		int i, j, k;
+		int aux;
+		if (P % 4 == 0) {
+			for (i = 0; i < N; i++) {
+				for (j = 0; j < M; j++) {
+					aux = 0;
+					for (k = 0; k < P; k += 4) {
+						aux += A[i][k]*B[k][j] + A[i][k+1]*B[k+1][j] + A[i][k+2]*B[k+2][j] + A[i][k+3]*B[k+3][j];
+					}
+					Result[i][j] = aux;
 				}
-				result[i][j] = sum1;
-				result[i][j + 1] = sum2;
-				result[i][j + 2] = sum3;
-				result[i][j + 3] = sum4;
+			}
+		} else if (P % 4 == 1) {
+			int PP = P - 1;
+			for (i = 0; i < N; i++) {
+				for (j = 0; j < M; j++) {
+					aux = 0;
+					for (k = 0; k < PP; k += 4) {
+						aux += A[i][k]*B[k][j] + A[i][k+1]*B[k+1][j] + A[i][k+2]*B[k+2][j] + A[i][k+3]*B[k+3][j];
+					}
+					Result[i][j] = aux + A[i][PP]*B[PP][j];
+				}
+			}
+		} else if (P % 4 == 2) {
+			int PP = P - 2;
+			int PPP = P - 1;
+			for (i = 0; i < N; i++) {
+				for (j = 0; j < M; j++) {
+					aux = 0;
+					for (k = 0; k < PP; k += 4) {
+						aux += A[i][k]*B[k][j] + A[i][k+1]*B[k+1][j] + A[i][k+2]*B[k+2][j] + A[i][k+3]*B[k+3][j];
+					}
+					Result[i][j] = aux + A[i][PP]*B[PP][j] + A[i][PPP]*B[PPP][j];
+				}
+			}
+		} else {
+			int PP = P - 3;
+			int PPP = P - 2;
+			int PPPP = P - 1;
+			for (i = 0; i < N; i++) {
+				for (j = 0; j < M; j++) {
+					aux = 0;
+					for (k = 0; k < PP; k += 4) {
+						aux += A[i][k]*B[k][j] + A[i][k+1]*B[k+1][j] + A[i][k+2]*B[k+2][j] + A[i][k+3]*B[k+3][j];
+					}
+					Result[i][j] = aux + A[i][PP]*B[PP][j] + A[i][PPP]*B[PPP][j] + A[i][PPPP]*B[PPPP][j];
+				}
 			}
 		}
+		
+		imprimirMatriz(Result);
+	}
 
-		return result;
+	private static void imprimirMatriz(int[][] matriz) {
+		// TODO Auto-generated method stub
+		for (int i = 0; i < matriz.length; i++) {
+			for (int j = 0; j < matriz[i].length; j++) {
+				System.out.print(matriz[i][j] + " ");
+			}
+			System.out.println();
+		}
+
 	}
 }
