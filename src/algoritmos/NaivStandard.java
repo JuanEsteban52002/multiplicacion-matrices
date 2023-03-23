@@ -1,5 +1,8 @@
 package algoritmos;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class NaivStandard {
 
 	public void naivStandard(int[][] A, int[][] B, int[][] result, int N, int P, int M) {
@@ -15,22 +18,27 @@ public class NaivStandard {
 				result[i][j] = aux;
 			}
 		}
-		imprimirMatriz(result);
+		guardarMatriz(result, "./src/matrices/Resultado(P1).txt");
 		
 	}
 	
 
-	private static void imprimirMatriz(int[][] matriz) {
-		// TODO Auto-generated method stub
-		System.out.println("naivStandard");
-		for (int i = 0; i < matriz.length; i++) {
-		    for (int j = 0; j < matriz[i].length; j++) {
-		        System.out.print(matriz[i][j] + " ");
-		    }
-		    System.out.println();
-		}
-
-	}
+    public static void guardarMatriz(int[][] matriz, String archivo) {
+        try {
+            FileWriter writer = new FileWriter(archivo);
+            for (int i = 0; i < matriz.length; i++) {
+                for (int j = 0; j < matriz[i].length; j++) {
+                    writer.write(matriz[i][j] + " ");
+                }
+                writer.write("\n");
+            }
+            writer.close();
+            System.out.println("La matriz se ha guardado correctamente en el archivo " + archivo);
+        } catch (IOException e) {
+            System.out.println("Error al guardar la matriz en el archivo " + archivo);
+            e.printStackTrace();
+        }
+    }
 	
 }
  

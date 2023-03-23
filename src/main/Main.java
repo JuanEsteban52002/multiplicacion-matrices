@@ -3,6 +3,10 @@ package main;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import algoritmos.IIIParallelBlock;
+import algoritmos.IIISequentialblock;
+import algoritmos.IVParallelBlock;
+import algoritmos.IVSequentialblock;
 import algoritmos.NaivKahan;
 import algoritmos.NaivLoopUnrollingFour;
 import algoritmos.NaivLoopUnrollingThree;
@@ -11,6 +15,8 @@ import algoritmos.NaivOnArray;
 import algoritmos.NaivStandard;
 import algoritmos.StrassenNaiv;
 import algoritmos.StrassenWinograd;
+import algoritmos.VParallelBlock;
+import algoritmos.VSequentialblock;
 import algoritmos.WinogradOriginal;
 import algoritmos.WinogradScaled;
 
@@ -33,12 +39,12 @@ public class Main {
 		WinogradScaled winoScaled = new WinogradScaled();
 		StrassenNaiv strassenNaiv = new StrassenNaiv();
 		StrassenWinograd strassenWinograd = new StrassenWinograd();
-		//IIISequentialblock iiiSequentialblock = new IIISequentialblock();
-		//IIIParallelBlock iiiParallelBlock = new IIIParallelBlock();
-		//IVSequentialblock ivSequentialblock = new IVSequentialblock();
-		//IVParallelBlock ivParallelBlock = new IVParallelBlock();
-		//VSequentialblock vSequentialblock = new VSequentialblock();
-		//VParallelBlock vParallelBlock = new VParallelBlock();
+		IIISequentialblock iiiSequentialblock = new IIISequentialblock();
+		IIIParallelBlock iiiParallelBlock = new IIIParallelBlock();
+		IVSequentialblock ivSequentialblock = new IVSequentialblock();
+		IVParallelBlock ivParallelBlock = new IVParallelBlock();
+		VSequentialblock vSequentialblock = new VSequentialblock();
+		VParallelBlock vParallelBlock = new VParallelBlock();
 		
 		
 		
@@ -74,11 +80,12 @@ public class Main {
 		
 		//imprimirMatriz(matriz1);
 		
-		inicioEjecucion = System.nanoTime();
-		naivStandard.naivStandard(matriz1, matriz2, resultado, N, P, M);
-		finEjecucion = System.nanoTime();
-		tiempo = (finEjecucion-inicioEjecucion);
-		System.out.println("Tiempo de ejecucion naivStandard: "+tiempo);
+//		inicioEjecucion = System.nanoTime();
+//		naivStandard.naivStandard(matriz1, matriz2, resultado, N, P, M);
+//		finEjecucion = System.nanoTime();
+//		tiempo = (finEjecucion-inicioEjecucion);
+//		System.out.println("Tiempo de ejecucion naivStandard: "+tiempo);
+		
 
 		
 		
@@ -137,11 +144,43 @@ public class Main {
 //		tiempo = (finEjecucion-inicioEjecucion);
 //		System.out.println("Tiempo de ejecucion StrassenWinograd: "+tiempo);
 		
+//		inicioEjecucion = System.nanoTime();
+//		iiiSequentialblock.iiisequentianblock(matriz1, matriz2, tamanio);
+//		finEjecucion = System.nanoTime();
+//		tiempo = (finEjecucion-inicioEjecucion);
+//		System.out.println("Tiempo de ejecucion iiisequentianblock: "+tiempo);
+        
+        
+//		inicioEjecucion = System.nanoTime();
+//		iiiParallelBlock.iiiParallelblock(matriz1, matriz2, tamanio);
+//		finEjecucion = System.nanoTime();
+//		tiempo = (finEjecucion-inicioEjecucion);
+//		System.out.println("Tiempo de ejecucion iiiParallelblock: "+tiempo);
 		
+//		inicioEjecucion = System.nanoTime();
+//		ivSequentialblock.ivSequentialblock(matriz1, matriz2, tamanio);
+//		finEjecucion = System.nanoTime();
+//		tiempo = (finEjecucion-inicioEjecucion);
+//		System.out.println("Tiempo de ejecucion iiiParallelblock: "+tiempo);
 		
+        
+//		inicioEjecucion = System.nanoTime();
+//		ivParallelBlock.ivParallelBlock(matriz1, matriz2, tamanio);
+//		finEjecucion = System.nanoTime();
+//		tiempo = (finEjecucion-inicioEjecucion);
+//		System.out.println("Tiempo de ejecucion iiiParallelblock: "+tiempo);
 		
+//		inicioEjecucion = System.nanoTime();
+//		ivSequentialblock.ivSequentialblock(matriz1, matriz2, tamanio);
+//		finEjecucion = System.nanoTime();
+//		tiempo = (finEjecucion-inicioEjecucion);
+//		System.out.println("Tiempo de ejecucion ivSequentialblock: "+tiempo);	
 		
-
+		inicioEjecucion = System.nanoTime();
+		vParallelBlock.vParallelBlock(matriz1, matriz2, tamanio);
+		finEjecucion = System.nanoTime();
+		tiempo = (finEjecucion-inicioEjecucion);
+		System.out.println("Tiempo de ejecucion vParallelBlock : "+tiempo);	
 		
 		
 	}
