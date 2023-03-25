@@ -2,6 +2,8 @@ package algoritmos;
 
 import java.util.stream.IntStream;
 
+import utilidades.Utilidades;
+
 public class VParallelBlock {
 	
 	public void vParallelBlock(int[][]matrizB, int[][]matrizC, int tamanio) {
@@ -25,7 +27,7 @@ public class VParallelBlock {
                 }
             }
         });
-		
+//		Utilidades.imprimirMatriz(matrizA);
 	}
 
 }

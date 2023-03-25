@@ -9,10 +9,10 @@ public class Utilidades {
 		
 	}
 	
-    public static void guardarResultado(String resultado, String nombreAlgoritmo) {
+    public static void guardarResultado( String nombreAlgoritmo, long tiempo) {
         try {
-            FileWriter archivo = new FileWriter("archivo.txt", true); // true para abrir en modo de append
-            archivo.write(resultado + " - " + nombreAlgoritmo + "\n"); // agregar el resultado y el parametro adicional al final del archivo
+            FileWriter archivo = new FileWriter("./src/matrices/ResiltadosMatriz8.txt", true); // true para abrir en modo de append
+            archivo.write(nombreAlgoritmo + " - " + tiempo + "\n"); // agregar el resultado y el parametro adicional al final del archivo
             archivo.close(); // cerrar el archivo
         } catch (IOException e) {
             System.out.println("Ha ocurrido un error al guardar el resultado en el archivo.");
@@ -20,7 +20,7 @@ public class Utilidades {
         }
     }
 	
-	private static void imprimirMatriz(int[][] matriz) {
+	public static void imprimirMatriz(int[][] matriz) {
 		// TODO Auto-generated method stub
 		for (int i = 0; i < matriz.length; i++) {
 		    for (int j = 0; j < matriz[i].length; j++) {
@@ -58,5 +58,7 @@ public class Utilidades {
             e.printStackTrace();
         }
     }
+    
+
 
 }

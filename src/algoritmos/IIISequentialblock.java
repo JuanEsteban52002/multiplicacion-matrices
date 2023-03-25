@@ -1,5 +1,7 @@
 package algoritmos;
 
+import utilidades.Utilidades;
+
 public class IIISequentialblock {
 
 	public void iiisequentianblock(int[][]matrizB, int[][]matrizC, int tamanio) {
@@ -21,6 +23,7 @@ public class IIISequentialblock {
 				}
 			}
 		}
+		//		Utilidades.imprimirMatriz(matrizA);
 
 	}
 

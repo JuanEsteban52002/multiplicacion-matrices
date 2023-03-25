@@ -1,5 +1,7 @@
 package algoritmos;
 
+import utilidades.Utilidades;
+
 public class StrassenWinograd {
 	public static void StrassenWinograd(int[][] A, int[][] B, int[][] Result, int N, int P, int M) {
 		int MaxSize, k, m, NewSize, i, j;
@@ -228,7 +230,7 @@ public class StrassenWinograd {
 				result[i][j] = aux;
 			}
 		}
-		imprimirMatriz(result);
+//		Utilidades.imprimirMatriz(result);
 
 	}
 
@@ -251,16 +253,6 @@ public class StrassenWinograd {
 
 
 
-	private static void imprimirMatriz(int[][] matriz) {
-		// TODO Auto-generated method stub
-		System.out.println("StrassenNaiv");
-		for (int i = 0; i < matriz.length; i++) {
-			for (int j = 0; j < matriz[i].length; j++) {
-				System.out.print(matriz[i][j] + " ");
-			}
-			System.out.println();
-		}
 
-	}
 
 }

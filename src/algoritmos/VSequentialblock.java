@@ -1,5 +1,7 @@
 package algoritmos;
 
+import utilidades.Utilidades;
+
 public class VSequentialblock {
 
 	public void vSequentialblock(int[][]matrizB, int[][]matrizC, int tamanio) {
@@ -23,6 +25,7 @@ public class VSequentialblock {
 				}
 			}
 		}
+//		Utilidades.imprimirMatriz(matrizA);
 
 	}
 }

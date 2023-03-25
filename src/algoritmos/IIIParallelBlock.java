@@ -2,6 +2,8 @@ package algoritmos;
 
 import java.util.Arrays;
 
+import utilidades.Utilidades;
+
 public class IIIParallelBlock {
 
 	public void iiiParallelblock(int[][] matrizB, int[][] matrizC, int tamanio) {
@@ -26,6 +28,8 @@ public class IIIParallelBlock {
 	            }
 	        }
 	    });
+//		Utilidades.imprimirMatriz(matrizA);
+
 	}
 	
 

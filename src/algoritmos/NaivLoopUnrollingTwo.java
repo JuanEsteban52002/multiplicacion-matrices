@@ -28,18 +28,8 @@ public class NaivLoopUnrollingTwo {
                 }
             }
         }
-        imprimirMatriz(Result);
+//        imprimirMatriz(Result);
     }
 	
 	
-	private static void imprimirMatriz(int[][] matriz) {
-		// TODO Auto-generated method stub
-		for (int i = 0; i < matriz.length; i++) {
-		    for (int j = 0; j < matriz[i].length; j++) {
-		        System.out.print(matriz[i][j] + " ");
-		    }
-		    System.out.println();
-		}
-
-	}
 }

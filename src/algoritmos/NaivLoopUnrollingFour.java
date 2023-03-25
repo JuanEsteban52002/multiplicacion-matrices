@@ -1,5 +1,7 @@
 package algoritmos;
 
+import utilidades.Utilidades;
+
 public class NaivLoopUnrollingFour {
 
 
@@ -53,18 +55,9 @@ public class NaivLoopUnrollingFour {
 				}
 			}
 		}
-		
-		imprimirMatriz(Result);
+
+//		Utilidades.imprimirMatriz(Result);
 	}
 
-	private static void imprimirMatriz(int[][] matriz) {
-		// TODO Auto-generated method stub
-		for (int i = 0; i < matriz.length; i++) {
-			for (int j = 0; j < matriz[i].length; j++) {
-				System.out.print(matriz[i][j] + " ");
-			}
-			System.out.println();
-		}
 
-	}
 }

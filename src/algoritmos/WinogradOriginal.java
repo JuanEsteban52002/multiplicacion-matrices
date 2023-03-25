@@ -1,5 +1,7 @@
 package algoritmos;
 
+import utilidades.Utilidades;
+
 public class WinogradOriginal {
 
 	public void winogradOriginal(int[][] A, int[][] B) {
@@ -31,18 +33,11 @@ public class WinogradOriginal {
 				C[i][j] = dotProduct - rowFactors[i] - colFactors[j] + A[i][n-1] * B[n-1][j];
 			}
 		}
-		imprimirMatriz(C);
+//		Utilidades.imprimirMatriz(C);
 	}
-	private static void imprimirMatriz(int[][] matriz) {
-		// TODO Auto-generated method stub
-		for (int i = 0; i < matriz.length; i++) {
-			for (int j = 0; j < matriz[i].length; j++) {
-				System.out.print(matriz[i][j] + " ");
-			}
-			System.out.println();
-		}
 
-	}
+
+
 
 
 }

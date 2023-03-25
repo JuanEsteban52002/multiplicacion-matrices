@@ -60,7 +60,7 @@ public class Main {
 //				 		 {4, 5, 6}, 
 //				 		 {7, 8, 9}};
 //		
-		int tamanio = 2048;
+		int tamanio = 8;
 		int[][]resultado = new int[tamanio][tamanio];
 		int N = tamanio;
 		int P = tamanio;
@@ -81,108 +81,144 @@ public class Main {
 		
 		//imprimirMatriz(matriz1);
 		
-//		inicioEjecucion = System.nanoTime();
-//		naivStandard.naivStandard(matriz1, matriz2, resultado, N, P, M);
-//		finEjecucion = System.nanoTime();
-//		tiempo = (finEjecucion-inicioEjecucion);
-//		System.out.println("Tiempo de ejecucion naivStandard: "+tiempo);
+		inicioEjecucion = System.nanoTime();
+		naivStandard.naivStandard(matriz1, matriz2, resultado, N, P, M);
+		finEjecucion = System.nanoTime();
+		tiempo = (finEjecucion-inicioEjecucion);
+		System.out.println("Tiempo de ejecucion naivStandard: "+tiempo);
+		Utilidades.guardarResultado("naivStandard", tiempo);
 		
 
 		
 		
-//		inicioEjecucion = System.nanoTime();
-//		naivOnArray.naivOnArray(matriz1, matriz2, resultado, N, P, M);
-//		finEjecucion = System.nanoTime();
-//		tiempo = (finEjecucion-inicioEjecucion);
-//		System.out.println("Tiempo de ejecucion naivOnArray: "+tiempo);
+		inicioEjecucion = System.nanoTime();
+		naivOnArray.naivOnArray(matriz1, matriz2, resultado, N, P, M);
+		finEjecucion = System.nanoTime();
+		tiempo = (finEjecucion-inicioEjecucion);
+		System.out.println("Tiempo de ejecucion naivOnArray: "+tiempo);
+		Utilidades.guardarResultado("naivOnArray", tiempo);
 		
 		
-//		inicioEjecucion = System.nanoTime();
-//		naivKahan.naivKahan(matriz1, matriz2, resultado, N, P, M);
-//		finEjecucion = System.nanoTime();
-//		tiempo = (finEjecucion-inicioEjecucion);
-//		System.out.println("Tiempo de ejecucion naivKahan : "+tiempo);
+		inicioEjecucion = System.nanoTime();
+		naivKahan.naivKahan(matriz1, matriz2, resultado, N, P, M);
+		finEjecucion = System.nanoTime();
+		tiempo = (finEjecucion-inicioEjecucion);
+		System.out.println("Tiempo de ejecucion naivKahan : "+tiempo);
+		Utilidades.guardarResultado("naivKahan", tiempo);
+
 		
-//		inicioEjecucion = System.nanoTime();
-//		naivLoopUnrollingTwo.naivLoopUnrollingTwo(matriz1, matriz2, resultado, N, P, M);
-//		finEjecucion = System.nanoTime();
-//		tiempo = (finEjecucion-inicioEjecucion);
-//		System.out.println("Tiempo de ejecucion naivLoopUnrollingTwo: "+tiempo);
+		inicioEjecucion = System.nanoTime();
+		naivLoopUnrollingTwo.naivLoopUnrollingTwo(matriz1, matriz2, resultado, N, P, M);
+		finEjecucion = System.nanoTime();
+		tiempo = (finEjecucion-inicioEjecucion);
+		System.out.println("Tiempo de ejecucion naivLoopUnrollingTwo: "+tiempo);
+		Utilidades.guardarResultado("naivLoopUnrollingTwo", tiempo);
+
 		
-//		inicioEjecucion = System.nanoTime();
-//		naivLoopUnrollingThree.naiveLoopUnrollingThree(matriz1, matriz2);
-//		finEjecucion = System.nanoTime();
-//		tiempo = (finEjecucion-inicioEjecucion);
-//		System.out.println("Tiempo de ejecucion naiveLoopUnrollingThree: "+tiempo);
+		inicioEjecucion = System.nanoTime();
+		naivLoopUnrollingThree.naiveLoopUnrollingThree(matriz1, matriz2);
+		finEjecucion = System.nanoTime();
+		tiempo = (finEjecucion-inicioEjecucion);
+		System.out.println("Tiempo de ejecucion naiveLoopUnrollingThree: "+tiempo);
+		Utilidades.guardarResultado("naiveLoopUnrollingThree", tiempo);
+
 		
-//		inicioEjecucion = System.nanoTime();
-//		naivLoopUnrollingFour.naivLoopUnrollingFour(matriz1, matriz2, resultado, N, P, M);
-//		finEjecucion = System.nanoTime();
-//		tiempo = (finEjecucion-inicioEjecucion);
-//		System.out.println("Tiempo de ejecucion naivLoopUnrollingFour: "+tiempo);
 		
-//		inicioEjecucion = System.nanoTime();
-//		winogradOriginal.winogradOriginal(matriz1, matriz2);
-//		finEjecucion = System.nanoTime();
-//		tiempo = (finEjecucion-inicioEjecucion);
-//		System.out.println("Tiempo de ejecucion winogradOriginal: "+tiempo);
+		inicioEjecucion = System.nanoTime();
+		naivLoopUnrollingFour.naivLoopUnrollingFour(matriz1, matriz2, resultado, N, P, M);
+		finEjecucion = System.nanoTime();
+		tiempo = (finEjecucion-inicioEjecucion);
+		System.out.println("Tiempo de ejecucion naivLoopUnrollingFour: "+tiempo);
+		Utilidades.guardarResultado("naivLoopUnrollingFour", tiempo);
+
 		
-//		inicioEjecucion = System.nanoTime();
-//		winoScaled.winogradScaled(matriz1, matriz2, resultado, N, P, M);
-//		finEjecucion = System.nanoTime();
-//		tiempo = (finEjecucion-inicioEjecucion);
-//		System.out.println("Tiempo de ejecucion winogradScaled: "+tiempo);		
 		
-//		inicioEjecucion = System.nanoTime();
-//		strassenNaiv.StrassenNaiv(matriz1, matriz2, resultado, N, P, M);
-//		finEjecucion = System.nanoTime();
-//		tiempo = (finEjecucion-inicioEjecucion);
-//		System.out.println("Tiempo de ejecucion StrassenNaiv: "+tiempo);
+		inicioEjecucion = System.nanoTime();
+		winogradOriginal.winogradOriginal(matriz1, matriz2);
+		finEjecucion = System.nanoTime();
+		tiempo = (finEjecucion-inicioEjecucion);
+		System.out.println("Tiempo de ejecucion winogradOriginal: "+tiempo);
+		Utilidades.guardarResultado("winogradOriginal", tiempo);
+
 		
-//		inicioEjecucion = System.nanoTime();
-//		StrassenWinograd.StrassenWinograd(matriz1, matriz2, resultado, N, P, M);
-//		finEjecucion = System.nanoTime();
-//		tiempo = (finEjecucion-inicioEjecucion);
-//		System.out.println("Tiempo de ejecucion StrassenWinograd: "+tiempo);
+		inicioEjecucion = System.nanoTime();
+		winoScaled.winogradScaled(matriz1, matriz2, resultado, N, P, M);
+		finEjecucion = System.nanoTime();
+		tiempo = (finEjecucion-inicioEjecucion);
+		System.out.println("Tiempo de ejecucion winogradScaled: "+tiempo);		
+		Utilidades.guardarResultado("winogradScaled", tiempo);
+
 		
-//		inicioEjecucion = System.nanoTime();
-//		iiiSequentialblock.iiisequentianblock(matriz1, matriz2, tamanio);
-//		finEjecucion = System.nanoTime();
-//		tiempo = (finEjecucion-inicioEjecucion);
-//		System.out.println("Tiempo de ejecucion iiisequentianblock: "+tiempo);
+		inicioEjecucion = System.nanoTime();
+		strassenNaiv.StrassenNaiv(matriz1, matriz2, resultado, N, P, M);
+		finEjecucion = System.nanoTime();
+		tiempo = (finEjecucion-inicioEjecucion);
+		System.out.println("Tiempo de ejecucion StrassenNaiv: "+tiempo);
+		Utilidades.guardarResultado("StrassenNaiv", tiempo);
+
+		
+		inicioEjecucion = System.nanoTime();
+		StrassenWinograd.StrassenWinograd(matriz1, matriz2, resultado, N, P, M);
+		finEjecucion = System.nanoTime();
+		tiempo = (finEjecucion-inicioEjecucion);
+		System.out.println("Tiempo de ejecucion StrassenWinograd: "+tiempo);
+		Utilidades.guardarResultado("StrassenWinograd", tiempo);
+
+		
+		inicioEjecucion = System.nanoTime();
+		iiiSequentialblock.iiisequentianblock(matriz1, matriz2, tamanio);
+		finEjecucion = System.nanoTime();
+		tiempo = (finEjecucion-inicioEjecucion);
+		System.out.println("Tiempo de ejecucion iiisequentianblock: "+tiempo);
+		Utilidades.guardarResultado("iiisequentianblock", tiempo);
+
         
         
-//		inicioEjecucion = System.nanoTime();
-//		iiiParallelBlock.iiiParallelblock(matriz1, matriz2, tamanio);
-//		finEjecucion = System.nanoTime();
-//		tiempo = (finEjecucion-inicioEjecucion);
-//		System.out.println("Tiempo de ejecucion iiiParallelblock: "+tiempo);
+		inicioEjecucion = System.nanoTime();
+		iiiParallelBlock.iiiParallelblock(matriz1, matriz2, tamanio);
+		finEjecucion = System.nanoTime();
+		tiempo = (finEjecucion-inicioEjecucion);
+		System.out.println("Tiempo de ejecucion iiiParallelblock: "+tiempo);
+		Utilidades.guardarResultado("iiiParallelblock", tiempo);
+
 		
-//		inicioEjecucion = System.nanoTime();
-//		ivSequentialblock.ivSequentialblock(matriz1, matriz2, tamanio);
-//		finEjecucion = System.nanoTime();
-//		tiempo = (finEjecucion-inicioEjecucion);
-//		System.out.println("Tiempo de ejecucion iiiParallelblock: "+tiempo);
+		inicioEjecucion = System.nanoTime();
+		ivSequentialblock.ivSequentialblock(matriz1, matriz2, tamanio);
+		finEjecucion = System.nanoTime();
+		tiempo = (finEjecucion-inicioEjecucion);
+		System.out.println("Tiempo de ejecucion iiiParallelblock: "+tiempo);
+		Utilidades.guardarResultado("iiiParallelblock", tiempo);
+
 		
         
-//		inicioEjecucion = System.nanoTime();
-//		ivParallelBlock.ivParallelBlock(matriz1, matriz2, tamanio);
-//		finEjecucion = System.nanoTime();
-//		tiempo = (finEjecucion-inicioEjecucion);
-//		System.out.println("Tiempo de ejecucion iiiParallelblock: "+tiempo);
+		inicioEjecucion = System.nanoTime();
+		ivParallelBlock.ivParallelBlock(matriz1, matriz2, tamanio);
+		finEjecucion = System.nanoTime();
+		tiempo = (finEjecucion-inicioEjecucion);
+		System.out.println("Tiempo de ejecucion iiiParallelblock: "+tiempo);
+		Utilidades.guardarResultado("iiiParallelblock", tiempo);
+
 		
-//		inicioEjecucion = System.nanoTime();
-//		ivSequentialblock.ivSequentialblock(matriz1, matriz2, tamanio);
-//		finEjecucion = System.nanoTime();
-//		tiempo = (finEjecucion-inicioEjecucion);
-//		System.out.println("Tiempo de ejecucion ivSequentialblock: "+tiempo);	
+		inicioEjecucion = System.nanoTime();
+		ivSequentialblock.ivSequentialblock(matriz1, matriz2, tamanio);
+		finEjecucion = System.nanoTime();
+		tiempo = (finEjecucion-inicioEjecucion);
+		System.out.println("Tiempo de ejecucion ivSequentialblock: "+tiempo);
+		Utilidades.guardarResultado("ivSequentialblock", tiempo);
+
+
 		
 		inicioEjecucion = System.nanoTime();
 		vParallelBlock.vParallelBlock(matriz1, matriz2, tamanio);
 		finEjecucion = System.nanoTime();
 		tiempo = (finEjecucion-inicioEjecucion);
 		System.out.println("Tiempo de ejecucion vParallelBlock : "+tiempo);	
+		Utilidades.guardarResultado("vParallelBlock", tiempo);
 		
+		
+		Utilidades.guardarResultado("================================================PRIMERA EJECUCION================================================", 1);
+
+
 		
 		
 	}
