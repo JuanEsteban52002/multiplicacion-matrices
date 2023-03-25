@@ -2,6 +2,7 @@ package main;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import algoritmos.IIIParallelBlock;
 import algoritmos.IIISequentialblock;
@@ -26,6 +27,11 @@ public class Main {
 	public static void main(String[] args) {
 		
 		long inicioEjecucion, finEjecucion, tiempo;
+		long inicioEjecucionGlobal, finEjecucionGlobal, tiempoGlobal;
+		
+		inicioEjecucionGlobal = System.nanoTime();
+
+		
 
 		
 		//Declaracion de todos los objetos para ejecutar cada uno de los algoritmos
@@ -48,10 +54,6 @@ public class Main {
 		VParallelBlock vParallelBlock = new VParallelBlock();
 		
 		
-		
-		//System.out.println("Algoritmo de multiplicación de matrices");
-		
-		
 //		int[][] matriz1 ={{1, 2, 3}, 
 //						 {4, 5, 6}, 
 //						 {7, 8, 9}};
@@ -60,11 +62,18 @@ public class Main {
 //				 		 {4, 5, 6}, 
 //				 		 {7, 8, 9}};
 //		
+//		int[][] resultado ={{30,  36 , 42 }, 
+//						 	{66 , 81 , 96 }, 
+//							{102, 126, 150}};
+		
+		
 		int tamanio = 8;
 		int[][]resultado = new int[tamanio][tamanio];
 		int N = tamanio;
 		int P = tamanio;
 		int M = tamanio;
+		String nombreArchivoResultados = "./src/matrices/Matriz"+ tamanio +".txt";
+		ArrayList<Long> datos = new ArrayList<>();
 		
 		
 		/*
@@ -86,9 +95,9 @@ public class Main {
 		finEjecucion = System.nanoTime();
 		tiempo = (finEjecucion-inicioEjecucion);
 		System.out.println("Tiempo de ejecucion naivStandard: "+tiempo);
-		Utilidades.guardarResultado("naivStandard", tiempo);
+		Utilidades.guardarResultado("naivStandard", tiempo, nombreArchivoResultados);
+		datos.add(tiempo);
 		
-
 		
 		
 		inicioEjecucion = System.nanoTime();
@@ -96,15 +105,18 @@ public class Main {
 		finEjecucion = System.nanoTime();
 		tiempo = (finEjecucion-inicioEjecucion);
 		System.out.println("Tiempo de ejecucion naivOnArray: "+tiempo);
-		Utilidades.guardarResultado("naivOnArray", tiempo);
-		
+		Utilidades.guardarResultado("naivOnArray", tiempo, nombreArchivoResultados);
+		datos.add(tiempo);
+
 		
 		inicioEjecucion = System.nanoTime();
 		naivKahan.naivKahan(matriz1, matriz2, resultado, N, P, M);
 		finEjecucion = System.nanoTime();
 		tiempo = (finEjecucion-inicioEjecucion);
 		System.out.println("Tiempo de ejecucion naivKahan : "+tiempo);
-		Utilidades.guardarResultado("naivKahan", tiempo);
+		Utilidades.guardarResultado("naivKahan", tiempo, nombreArchivoResultados);
+		datos.add(tiempo);
+
 
 		
 		inicioEjecucion = System.nanoTime();
@@ -112,7 +124,9 @@ public class Main {
 		finEjecucion = System.nanoTime();
 		tiempo = (finEjecucion-inicioEjecucion);
 		System.out.println("Tiempo de ejecucion naivLoopUnrollingTwo: "+tiempo);
-		Utilidades.guardarResultado("naivLoopUnrollingTwo", tiempo);
+		Utilidades.guardarResultado("naivLoopUnrollingTwo", tiempo, nombreArchivoResultados);
+		datos.add(tiempo);
+
 
 		
 		inicioEjecucion = System.nanoTime();
@@ -120,7 +134,8 @@ public class Main {
 		finEjecucion = System.nanoTime();
 		tiempo = (finEjecucion-inicioEjecucion);
 		System.out.println("Tiempo de ejecucion naiveLoopUnrollingThree: "+tiempo);
-		Utilidades.guardarResultado("naiveLoopUnrollingThree", tiempo);
+		Utilidades.guardarResultado("naiveLoopUnrollingThree", tiempo, nombreArchivoResultados);
+		datos.add(tiempo);
 
 		
 		
@@ -129,7 +144,8 @@ public class Main {
 		finEjecucion = System.nanoTime();
 		tiempo = (finEjecucion-inicioEjecucion);
 		System.out.println("Tiempo de ejecucion naivLoopUnrollingFour: "+tiempo);
-		Utilidades.guardarResultado("naivLoopUnrollingFour", tiempo);
+		Utilidades.guardarResultado("naivLoopUnrollingFour", tiempo, nombreArchivoResultados);
+		datos.add(tiempo);
 
 		
 		
@@ -138,7 +154,8 @@ public class Main {
 		finEjecucion = System.nanoTime();
 		tiempo = (finEjecucion-inicioEjecucion);
 		System.out.println("Tiempo de ejecucion winogradOriginal: "+tiempo);
-		Utilidades.guardarResultado("winogradOriginal", tiempo);
+		Utilidades.guardarResultado("winogradOriginal", tiempo, nombreArchivoResultados);
+		datos.add(tiempo);
 
 		
 		inicioEjecucion = System.nanoTime();
@@ -146,7 +163,8 @@ public class Main {
 		finEjecucion = System.nanoTime();
 		tiempo = (finEjecucion-inicioEjecucion);
 		System.out.println("Tiempo de ejecucion winogradScaled: "+tiempo);		
-		Utilidades.guardarResultado("winogradScaled", tiempo);
+		Utilidades.guardarResultado("winogradScaled", tiempo, nombreArchivoResultados);
+		datos.add(tiempo);
 
 		
 		inicioEjecucion = System.nanoTime();
@@ -154,7 +172,8 @@ public class Main {
 		finEjecucion = System.nanoTime();
 		tiempo = (finEjecucion-inicioEjecucion);
 		System.out.println("Tiempo de ejecucion StrassenNaiv: "+tiempo);
-		Utilidades.guardarResultado("StrassenNaiv", tiempo);
+		Utilidades.guardarResultado("StrassenNaiv", tiempo, nombreArchivoResultados);
+		datos.add(tiempo);
 
 		
 		inicioEjecucion = System.nanoTime();
@@ -162,7 +181,8 @@ public class Main {
 		finEjecucion = System.nanoTime();
 		tiempo = (finEjecucion-inicioEjecucion);
 		System.out.println("Tiempo de ejecucion StrassenWinograd: "+tiempo);
-		Utilidades.guardarResultado("StrassenWinograd", tiempo);
+		Utilidades.guardarResultado("StrassenWinograd", tiempo, nombreArchivoResultados);
+		datos.add(tiempo);
 
 		
 		inicioEjecucion = System.nanoTime();
@@ -170,7 +190,8 @@ public class Main {
 		finEjecucion = System.nanoTime();
 		tiempo = (finEjecucion-inicioEjecucion);
 		System.out.println("Tiempo de ejecucion iiisequentianblock: "+tiempo);
-		Utilidades.guardarResultado("iiisequentianblock", tiempo);
+		Utilidades.guardarResultado("iiisequentianblock", tiempo, nombreArchivoResultados);
+		datos.add(tiempo);
 
         
         
@@ -179,7 +200,8 @@ public class Main {
 		finEjecucion = System.nanoTime();
 		tiempo = (finEjecucion-inicioEjecucion);
 		System.out.println("Tiempo de ejecucion iiiParallelblock: "+tiempo);
-		Utilidades.guardarResultado("iiiParallelblock", tiempo);
+		Utilidades.guardarResultado("iiiParallelblock", tiempo, nombreArchivoResultados);
+		datos.add(tiempo);
 
 		
 		inicioEjecucion = System.nanoTime();
@@ -187,7 +209,8 @@ public class Main {
 		finEjecucion = System.nanoTime();
 		tiempo = (finEjecucion-inicioEjecucion);
 		System.out.println("Tiempo de ejecucion iiiParallelblock: "+tiempo);
-		Utilidades.guardarResultado("iiiParallelblock", tiempo);
+		Utilidades.guardarResultado("iiiParallelblock", tiempo, nombreArchivoResultados);
+		datos.add(tiempo);
 
 		
         
@@ -196,7 +219,8 @@ public class Main {
 		finEjecucion = System.nanoTime();
 		tiempo = (finEjecucion-inicioEjecucion);
 		System.out.println("Tiempo de ejecucion iiiParallelblock: "+tiempo);
-		Utilidades.guardarResultado("iiiParallelblock", tiempo);
+		Utilidades.guardarResultado("iiiParallelblock", tiempo, nombreArchivoResultados);
+		datos.add(tiempo);
 
 		
 		inicioEjecucion = System.nanoTime();
@@ -204,7 +228,8 @@ public class Main {
 		finEjecucion = System.nanoTime();
 		tiempo = (finEjecucion-inicioEjecucion);
 		System.out.println("Tiempo de ejecucion ivSequentialblock: "+tiempo);
-		Utilidades.guardarResultado("ivSequentialblock", tiempo);
+		Utilidades.guardarResultado("ivSequentialblock", tiempo, nombreArchivoResultados);
+		datos.add(tiempo);
 
 
 		
@@ -213,12 +238,27 @@ public class Main {
 		finEjecucion = System.nanoTime();
 		tiempo = (finEjecucion-inicioEjecucion);
 		System.out.println("Tiempo de ejecucion vParallelBlock : "+tiempo);	
-		Utilidades.guardarResultado("vParallelBlock", tiempo);
-		
-		
-		Utilidades.guardarResultado("================================================PRIMERA EJECUCION================================================", 1);
+		Utilidades.guardarResultado("vParallelBlock", tiempo, nombreArchivoResultados);
+		datos.add(tiempo);
 
+		
 
+		
+		//Requerimiento 6:
+		double media = Utilidades.calcularMedia(datos);
+        double varianza = Utilidades.calcularVarianza(datos, media);
+        double desviacionEstandar = Math.sqrt(varianza);
+        System.out.println("La Desviacion Estandar es: " + desviacionEstandar);
+		Utilidades.calcularRango(datos);
+		
+
+		
+		//Tiempos de ejecucion global
+		finEjecucionGlobal = System.nanoTime();
+		tiempoGlobal = finEjecucionGlobal - inicioEjecucionGlobal;
+		System.out.println("El tiempo global de ejecucion es: "+ tiempoGlobal);
+
+		
 		
 		
 	}

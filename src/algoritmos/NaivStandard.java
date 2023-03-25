@@ -20,7 +20,7 @@ public class NaivStandard {
 				result[i][j] = aux;
 			}
 		}
-//		Utilidades.guardarMatriz(result, "./src/matrices/Resultado(P1).txt");
+		Utilidades.guardarMatriz(result, "./src/matrices/Resultado(P1).txt");
 		
 	}
 	
