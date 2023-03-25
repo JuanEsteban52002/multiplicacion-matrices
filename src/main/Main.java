@@ -19,6 +19,7 @@ import algoritmos.VParallelBlock;
 import algoritmos.VSequentialblock;
 import algoritmos.WinogradOriginal;
 import algoritmos.WinogradScaled;
+import utilidades.Utilidades;
 
 public class Main {
 	
@@ -70,12 +71,12 @@ public class Main {
 		 * Para generar las matrices 
 		 */
 		
-        int[][] matriz1 = generarMatriz(tamanio);
-        int[][] matriz2 = generarMatriz(tamanio);
+        int[][] matriz1 = Utilidades.generarMatriz(tamanio);
+        int[][] matriz2 = Utilidades.generarMatriz(tamanio);
 
         // Guardar la matriz en un archivo
-        guardarMatriz(matriz1, "./src/matrices/prueba1(M1).txt");
-        guardarMatriz(matriz2, "./src/matrices/prueba1(M2).txt");
+        Utilidades.guardarMatriz(matriz1, "./src/matrices/prueba1(M1).txt");
+        Utilidades.guardarMatriz(matriz2, "./src/matrices/prueba1(M2).txt");
 
 		
 		//imprimirMatriz(matriz1);
@@ -183,46 +184,10 @@ public class Main {
 		System.out.println("Tiempo de ejecucion vParallelBlock : "+tiempo);	
 		
 		
+		
 	}
 
-	private static void imprimirMatriz(int[][] matriz) {
-		// TODO Auto-generated method stub
-		for (int i = 0; i < matriz.length; i++) {
-		    for (int j = 0; j < matriz[i].length; j++) {
-		        System.out.print(matriz[i][j] + " ");
-		    }
-		    System.out.println();
-		}
-
-	}
 	
-	
-	public static int[][] generarMatriz(int n) {
-        int[][] matriz = new int[n][n];
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                matriz[i][j] = (int) (Math.random() * (9999 - 1000 + 1) + 1000);
-            }
-        }
-        return matriz;
-    }
-
-    public static void guardarMatriz(int[][] matriz, String archivo) {
-        try {
-            FileWriter writer = new FileWriter(archivo);
-            for (int i = 0; i < matriz.length; i++) {
-                for (int j = 0; j < matriz[i].length; j++) {
-                    writer.write(matriz[i][j] + " ");
-                }
-                writer.write("\n");
-            }
-            writer.close();
-            System.out.println("La matriz se ha guardado correctamente en el archivo " + archivo);
-        } catch (IOException e) {
-            System.out.println("Error al guardar la matriz en el archivo " + archivo);
-            e.printStackTrace();
-        }
-    }
 
 }
 
