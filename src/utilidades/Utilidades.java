@@ -22,6 +22,20 @@ public class Utilidades {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void guardarEstadisticos( double media, double varianza, double desviacionEstandar, double rango,  String nombreArchivo) {
+		try {
+			FileWriter archivo = new FileWriter(nombreArchivo, true); // true para abrir en modo de append
+			archivo.write("Media" + " - " + media + "\n" ); // agregar el resultado y el parametro adicional al final del archivo
+			archivo.write("Varianza" + " - " + varianza + "\n" );
+			archivo.write("desviacionEstandar" + " - " + desviacionEstandar + "\n" );
+			archivo.write("rango" + " - " + rango + "\n" );
+			archivo.close(); // cerrar el archivo
+		} catch (IOException e) {
+			System.out.println("Ha ocurrido un error al guardar el resultado en el archivo.");
+			e.printStackTrace();
+		}
+	}
 
 	public static void imprimirMatriz(int[][] matriz) {
 		// TODO Auto-generated method stub
@@ -85,7 +99,7 @@ public class Utilidades {
 	}
 	
 	
-	public static void calcularRango(ArrayList<Long> datos) {
+	public static double calcularRango(ArrayList<Long> datos) {
 		
 		long datoMayor, datoMenor, rango;
 		ArrayList<Long> datosOrdenados = ordenarDeMayorAMenor(datos);
@@ -96,6 +110,8 @@ public class Utilidades {
        rango = datoMayor - datoMenor;
        
        System.out.println("El rango entre los datos es: " + rango);
+       
+	return rango;
   
 
 		

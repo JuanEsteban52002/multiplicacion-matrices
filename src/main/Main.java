@@ -27,9 +27,7 @@ public class Main {
 	public static void main(String[] args) {
 		
 		long inicioEjecucion, finEjecucion, tiempo;
-		long inicioEjecucionGlobal, finEjecucionGlobal, tiempoGlobal;
 		
-		inicioEjecucionGlobal = System.nanoTime();
 
 		
 
@@ -63,6 +61,7 @@ public class Main {
 		int P = tamanio;
 		int M = tamanio;
 		String nombreArchivoResultados = "./src/resultados/Tiempos de Ejecucion "+ tamanio +".txt";
+		String nombreArchivoEstadisticos = "./src/resultados/Estadisticos "+ tamanio +".txt";
 		ArrayList<Long> datos = new ArrayList<>();
 		
 
@@ -238,14 +237,12 @@ public class Main {
         double varianza = Utilidades.calcularVarianza(datos, media);
         double desviacionEstandar = Math.sqrt(varianza);
         System.out.println("La Desviacion Estandar es: " + desviacionEstandar);
-		Utilidades.calcularRango(datos);
+		double rengo = Utilidades.calcularRango(datos);
 		
-
+		Utilidades.guardarEstadisticos(media, varianza, desviacionEstandar, rengo, nombreArchivoEstadisticos);
 		
-		//Tiempos de ejecucion global
-		finEjecucionGlobal = System.nanoTime();
-		tiempoGlobal = finEjecucionGlobal - inicioEjecucionGlobal;
-		System.out.println("El tiempo global de ejecucion es: "+ tiempoGlobal);
+		
+	
 
 		
 		
