@@ -1,0 +1,16 @@
+naivStandard - 10100
+naivOnArray - 6500
+naivKahan - 17500
+naivLoopUnrollingTwo - 47100
+naiveLoopUnrollingThree - 30700
+naivLoopUnrollingFour - 8300
+winogradOriginal - 43000
+winogradScaled - 319800
+StrassenNaiv - 130700
+StrassenWinograd - 175800
+iiisequentianblock - 40900
+iiiParallelblock - 38169400
+ivSequentialblock - 2774800
+ivParallelBlock - 540900
+vSequentialblock - 17400
+vParallelBlock - 451100

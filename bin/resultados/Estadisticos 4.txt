@@ -1,0 +1,4 @@
+Media - 2674000.0
+Varianza - 9.005680163066667E13
+desviacionEstandar - 9489826.217095163
+rango - 3.81629E7
