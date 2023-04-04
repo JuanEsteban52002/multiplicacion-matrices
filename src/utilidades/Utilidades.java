@@ -1,5 +1,7 @@
 package utilidades;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,21 +17,21 @@ public class Utilidades {
 	public static void guardarResultado( String nombreAlgoritmo, long tiempo, String nombreArchivo) {
 		try {
 			FileWriter archivo = new FileWriter(nombreArchivo, true); // true para abrir en modo de append
-			archivo.write(nombreAlgoritmo + " - " + tiempo + "\n"); // agregar el resultado y el parametro adicional al final del archivo
+			archivo.write(nombreAlgoritmo + "-" + tiempo + "\n"); // agregar el resultado y el parametro adicional al final del archivo
 			archivo.close(); // cerrar el archivo
 		} catch (IOException e) {
 			System.out.println("Ha ocurrido un error al guardar el resultado en el archivo.");
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void guardarEstadisticos( double media, double varianza, double desviacionEstandar, double rango,  String nombreArchivo) {
 		try {
 			FileWriter archivo = new FileWriter(nombreArchivo, true); // true para abrir en modo de append
-			archivo.write("Media" + " - " + media + "\n" ); // agregar el resultado y el parametro adicional al final del archivo
-			archivo.write("Varianza" + " - " + varianza + "\n" );
-			archivo.write("desviacionEstandar" + " - " + desviacionEstandar + "\n" );
-			archivo.write("rango" + " - " + rango + "\n" );
+			archivo.write("Media" + "-" + media + "\n" ); // agregar el resultado y el parametro adicional al final del archivo
+			archivo.write("Varianza" + "-" + varianza + "\n" );
+			archivo.write("desviacionEstandar" + "-" + desviacionEstandar + "\n" );
+			archivo.write("rango" + "-" + rango + "\n" );
 			archivo.close(); // cerrar el archivo
 		} catch (IOException e) {
 			System.out.println("Ha ocurrido un error al guardar el resultado en el archivo.");
@@ -86,56 +88,105 @@ public class Utilidades {
 		for (Long dato : datos) {
 			sumatoria += dato;
 		}
-		
+
 
 
 		double media = (double) sumatoria / cantidadDatos;
-		
-        String numeroFormateado = String.format("%.4f", media);
-        System.out.println("La media de los datos es:  " + numeroFormateado);
-        
+
+		String numeroFormateado = String.format("%.4f", media);
+		System.out.println("La media de los datos es:  " + numeroFormateado);
+
 		return media;	
 
 	}
-	
-	
+
+
 	public static double calcularRango(ArrayList<Long> datos) {
-		
+
 		long datoMayor, datoMenor, rango;
 		ArrayList<Long> datosOrdenados = ordenarDeMayorAMenor(datos);
-		
-        datoMayor = datosOrdenados.get(0);
-        datoMenor = datosOrdenados.get(datosOrdenados.size()-1);
-        
-       rango = datoMayor - datoMenor;
-       
-       System.out.println("El rango entre los datos es: " + rango);
-       
-	return rango;
-  
+
+		datoMayor = datosOrdenados.get(0);
+		datoMenor = datosOrdenados.get(datosOrdenados.size()-1);
+
+		rango = datoMayor - datoMenor;
+
+		System.out.println("El rango entre los datos es: " + rango);
+
+		return rango;
+
+	}
+
+	public static ArrayList<Long> ordenarDeMayorAMenor(ArrayList<Long> datos) {
+		Comparator<Long> comparador = Collections.reverseOrder();
+		Collections.sort(datos, comparador);
+		return datos;
+	}
+
+
+	public static double calcularVarianza(ArrayList<Long> datos, double media) {
+		double sumaCuadrados = 0;
+		double varianza; 
+		for (long dato : datos) {
+			sumaCuadrados += Math.pow(dato - media, 2);
+		}
+
+		varianza = sumaCuadrados / (datos.size() - 1);
+		System.out.println("La varianza es: " + varianza);
+
+		return varianza;
+
+	}
+
+
+	public static  ArrayList<String> leerArchivo(String ruta) {
+
+
+		String nombreArchivo = ruta;
+		ArrayList<String> texto = new ArrayList<>();
+
+		try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
+
+			String linea;
+
+			while ((linea = br.readLine()) != null) {
+				//				System.out.println(linea);
+				texto.add(linea);
+
+			}
+			return texto;
+
+		} catch (IOException e) {
+			System.out.println("Error al leer el archivo: " + e.getMessage());
+		}
+		return texto;
+
+	}
+
+	public static String separarCadena1(String cadena) {
+
+
+		String[] arregloCadena = cadena.split("-");
+
+		String cadenaSeparada = arregloCadena[0];
+
+		return cadenaSeparada;
+
 	}
 	
-    public static ArrayList<Long> ordenarDeMayorAMenor(ArrayList<Long> datos) {
-        Comparator<Long> comparador = Collections.reverseOrder();
-        Collections.sort(datos, comparador);
-        return datos;
-    }
-    
-    
-    public static double calcularVarianza(ArrayList<Long> datos, double media) {
-        double sumaCuadrados = 0;
-        double varianza; 
-        for (long dato : datos) {
-            sumaCuadrados += Math.pow(dato - media, 2);
-        }
-        
-        varianza = sumaCuadrados / (datos.size() - 1);
-        System.out.println("La varianza es: " + varianza);
-        
-        return varianza;
-		
-	}
-    
+	public static String separarCadena2(String cadena) {
 
+
+		String[] arregloCadena = cadena.split("-");
+
+		String cadenaSeparada = arregloCadena[1];
+
+		return cadenaSeparada;
+
+	}
 
 }
+
+
+
+

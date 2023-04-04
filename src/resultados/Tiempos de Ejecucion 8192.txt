@@ -1,0 +1,8 @@
+naivStandard-5522751980300
+naivOnArray-5415709248900
+naivKahan-5462677843200
+naivLoopUnrollingTwo-5720097932300
+naiveLoopUnrollingThree-5630885821300
+naivLoopUnrollingFour-5545659118000
+winogradOriginal-5638634454300
+winogradScaled-5635373890300

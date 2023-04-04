@@ -1,16 +1,16 @@
-naivStandard - 10100
-naivOnArray - 6500
-naivKahan - 17500
-naivLoopUnrollingTwo - 47100
-naiveLoopUnrollingThree - 30700
-naivLoopUnrollingFour - 8300
-winogradOriginal - 43000
-winogradScaled - 319800
-StrassenNaiv - 130700
-StrassenWinograd - 175800
-iiisequentianblock - 40900
-iiiParallelblock - 38169400
-ivSequentialblock - 2774800
-ivParallelBlock - 540900
-vSequentialblock - 17400
-vParallelBlock - 451100
+naivStandard-8400
+naivOnArray-5600
+naivKahan-9200
+naivLoopUnrollingTwo-23500
+naiveLoopUnrollingThree-29000
+naivLoopUnrollingFour-32800
+winogradOriginal-24500
+winogradScaled-347000
+StrassenNaiv-184700
+StrassenWinograd-336600
+iiisequentianblock-20800
+iiiParallelblock-26942200
+ivSequentialblock-2865900
+ivParallelBlock-970500
+vSequentialblock-26800
+vParallelBlock-668500

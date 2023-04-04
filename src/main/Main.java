@@ -55,7 +55,7 @@ public class Main {
 //		int[] tamañoMatrices = {4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192};
 		
 		
-		int tamanio = 4;
+		int tamanio = 8192;
 		int[][]resultado = new int[tamanio][tamanio];
 		int N = tamanio;
 		int P = tamanio;
@@ -63,6 +63,7 @@ public class Main {
 		String nombreArchivoResultados = "./src/resultados/Tiempos de Ejecucion "+ tamanio +".txt";
 		String nombreArchivoEstadisticos = "./src/resultados/Estadisticos "+ tamanio +".txt";
 		ArrayList<Long> datos = new ArrayList<>();
+		
 		
 
 		
@@ -238,8 +239,10 @@ public class Main {
         double desviacionEstandar = Math.sqrt(varianza);
         System.out.println("La Desviacion Estandar es: " + desviacionEstandar);
 		double rengo = Utilidades.calcularRango(datos);
-		
 		Utilidades.guardarEstadisticos(media, varianza, desviacionEstandar, rengo, nombreArchivoEstadisticos);
+		
+
+
 		
 		
 	

@@ -22,23 +22,33 @@ public class GraficoDispersion {
 	private static XYDataset crearDataset() {
 		XYSeriesCollection dataset = new XYSeriesCollection();
 		XYSeries serie = new XYSeries("Datos de ejemplo");
-		serie.add(1012548, 41552447);
-		serie.add(1120459368, 124578631);
-		serie.add(74125871, 114520365);
-		serie.add(1145233699, 1474125086);
-		serie.add(448821153, 112547893);
+		serie.add(4, 1);
+		serie.add(8, 2);
+		serie.add(16, 3);
+		serie.add(32, 4);
+		serie.add(64, 5);
+		serie.add(128, 5);
+		serie.add(256, 5);
+		serie.add(512, 5);
+		serie.add(1024, 5);
+		serie.add(2048, 5);
+		serie.add(4096, 5);
+		serie.add(8192, 5);
+
+
 		dataset.addSeries(serie);
 		return dataset;
 	}
 
+	
 
 	private static JFreeChart crearGrafico(XYDataset dataset) {
 		JFreeChart chart = ChartFactory.createScatterPlot(
-				"Gráfico de dispersión", // Título
+				"Grafico de dispersion", // Titulo
 				"Eje X", // Etiqueta del eje X
 				"Eje Y", // Etiqueta del eje Y
 				dataset, // Conjunto de datos
-				PlotOrientation.VERTICAL, // Orientación del gráfico
+				PlotOrientation.VERTICAL, // Orientaciï¿½n del grï¿½fico
 				true, // Leyenda
 				true, // Tooltips
 				false // URLs

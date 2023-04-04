@@ -3,6 +3,8 @@ package utilidades;
 import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
@@ -10,34 +12,62 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 
 public class GraficoDeBarras {
-	
+
 	public GraficoDeBarras() {
-		
+
 	}
-    public static void main(String[] args) throws IOException {
-        // Crear un conjunto de datos para el gr·fico
-        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        dataset.addValue(10, "Tiempo", "Algoritmo 1");
-        dataset.addValue(15, "Tiempo", "Algoritmo 2");
-        dataset.addValue(8, "Tiempo", "Algoritmo 3");
-        dataset.addValue(12, "Tiempo", "Algoritmo 4");
+	public static void main(String[] args) throws IOException {
 
-        // Crear el gr·fico de barras
-        JFreeChart chart = ChartFactory.createBarChart(
-                "Tiempos de ejecuciÛn",
-                "Algoritmos",
-                "Tiempo (ms)",
-                dataset,
-                PlotOrientation.VERTICAL,
-                true,
-                true,
-                false
-        );
-        // Configurar el color de fondo del gr·fico
-        chart.setBackgroundPaint(Color.white);
+		int tamanio = 4;
 
-        // Guardar el gr·fico en un archivo PNG
-        File archivo = new File("grafico.png");
-        ChartUtilities.saveChartAsPNG(archivo, chart, 600, 400);
-    }
+		String nombreArchivoResultados = "./src/resultados/Tiempos de Ejecucion "+ tamanio +".txt";
+
+		ArrayList<String> temp = new ArrayList<>();
+
+		temp = Utilidades.leerArchivo(nombreArchivoResultados);
+
+		String[] contenidoArchivo = temp.toArray(new String[temp.size()]);
+		
+		int[] cadenaTiempos = new int[16]; // el tama√±o es 16, ya que sabemos que no tenemos mas de esos algoritmos
+		String[] cadenaNombres = new String[16]; // el tama√±o es 16, ya que sabemos que no tenemos mas de esos algoritmos
+		
+		for (int i = 0; i < contenidoArchivo.length; i++) {
+			
+			cadenaTiempos[i] = Integer.parseInt(Utilidades.separarCadena2(contenidoArchivo[i]));
+			cadenaNombres[i]= Utilidades.separarCadena1(contenidoArchivo[i]);
+
+		}
+		
+		System.out.println(cadenaTiempos[0]);
+
+
+
+		// Crear un conjunto de datos para el grÔøΩfico
+		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+		
+		for (int i = 0; i < cadenaTiempos.length; i++) {
+			dataset.addValue(cadenaTiempos[i], "Tiempo", cadenaNombres[i]);
+			
+		}
+
+		
+
+		// Crear el grÔøΩfico de barras
+		JFreeChart chart = ChartFactory.createBarChart(
+				"Tiempos de ejecucion",
+				"Algoritmos",
+				"Tiempo (ms)",
+				dataset,
+				PlotOrientation.VERTICAL,
+				true,
+				true,
+				false
+				);
+		// Configurar el color de fondo del grÔøΩfico
+		chart.setBackgroundPaint(Color.white);
+
+		// Guardar el grÔøΩfico en un archivo PNG
+		File archivo = new File("grafico.png");
+		ChartUtilities.saveChartAsPNG(archivo, chart, 1200, 800);
+	}
 }
