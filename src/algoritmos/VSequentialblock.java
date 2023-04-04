@@ -25,7 +25,7 @@ public class VSequentialblock {
 				}
 			}
 		}
-//		Utilidades.imprimirMatriz(matrizA);
+//	    Utilidades.guardarMatriz(matrizA, "./src/resultados/MatrizResultado(vSequentialblock).txt");
 
 	}
 }

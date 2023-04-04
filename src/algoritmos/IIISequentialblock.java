@@ -23,7 +23,7 @@ public class IIISequentialblock {
 				}
 			}
 		}
-		//		Utilidades.imprimirMatriz(matrizA);
+//	    Utilidades.guardarMatriz(matrizA, "./src/resultados/MatrizResultado(iiisequentianblock).txt");
 
 	}
 

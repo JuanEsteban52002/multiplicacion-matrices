@@ -26,7 +26,7 @@ public class IVParallelBlock {
 				}
 			}
 		});
-		//	Utilidades.imprimirMatriz(matrizC);
+//	    Utilidades.guardarMatriz(matrizA, "./src/resultados/MatrizResultado(ivParallelBlock).txt");
 
 	}
 }

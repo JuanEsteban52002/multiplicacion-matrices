@@ -54,27 +54,18 @@ public class Main {
 		VParallelBlock vParallelBlock = new VParallelBlock();
 		
 		
-//		int[][] matriz1 ={{1, 2, 3}, 
-//						 {4, 5, 6}, 
-//						 {7, 8, 9}};
-//		
-//		int[][] matriz2 ={{1, 2, 3}, 
-//				 		 {4, 5, 6}, 
-//				 		 {7, 8, 9}};
-//		
-//		int[][] resultado ={{30,  36 , 42 }, 
-//						 	{66 , 81 , 96 }, 
-//							{102, 126, 150}};
+//		int[] tamañoMatrices = {4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192};
 		
 		
-		int tamanio = 8;
+		int tamanio = 4;
 		int[][]resultado = new int[tamanio][tamanio];
 		int N = tamanio;
 		int P = tamanio;
 		int M = tamanio;
-		String nombreArchivoResultados = "./src/matrices/Matriz"+ tamanio +".txt";
+		String nombreArchivoResultados = "./src/resultados/Tiempos de Ejecucion "+ tamanio +".txt";
 		ArrayList<Long> datos = new ArrayList<>();
 		
+
 		
 		/*
 		 * Para generar las matrices 
@@ -84,12 +75,10 @@ public class Main {
         int[][] matriz2 = Utilidades.generarMatriz(tamanio);
 
         // Guardar la matriz en un archivo
-        Utilidades.guardarMatriz(matriz1, "./src/matrices/prueba1(M1).txt");
-        Utilidades.guardarMatriz(matriz2, "./src/matrices/prueba1(M2).txt");
+        Utilidades.guardarMatriz(matriz1, "./src/matrices/Matriz1 ("+ tamanio + ").txt");
+        Utilidades.guardarMatriz(matriz2, "./src/matrices/Matriz2 ("+ tamanio + ").txt");
 
-		
-		//imprimirMatriz(matriz1);
-		
+			
 		inicioEjecucion = System.nanoTime();
 		naivStandard.naivStandard(matriz1, matriz2, resultado, N, P, M);
 		finEjecucion = System.nanoTime();
@@ -208,8 +197,8 @@ public class Main {
 		ivSequentialblock.ivSequentialblock(matriz1, matriz2, tamanio);
 		finEjecucion = System.nanoTime();
 		tiempo = (finEjecucion-inicioEjecucion);
-		System.out.println("Tiempo de ejecucion iiiParallelblock: "+tiempo);
-		Utilidades.guardarResultado("iiiParallelblock", tiempo, nombreArchivoResultados);
+		System.out.println("Tiempo de ejecucion ivSequentialblock: "+tiempo);
+		Utilidades.guardarResultado("ivSequentialblock", tiempo, nombreArchivoResultados);
 		datos.add(tiempo);
 
 		
@@ -218,17 +207,17 @@ public class Main {
 		ivParallelBlock.ivParallelBlock(matriz1, matriz2, tamanio);
 		finEjecucion = System.nanoTime();
 		tiempo = (finEjecucion-inicioEjecucion);
-		System.out.println("Tiempo de ejecucion iiiParallelblock: "+tiempo);
-		Utilidades.guardarResultado("iiiParallelblock", tiempo, nombreArchivoResultados);
+		System.out.println("Tiempo de ejecucion ivParallelBlock: "+tiempo);
+		Utilidades.guardarResultado("ivParallelBlock", tiempo, nombreArchivoResultados);
 		datos.add(tiempo);
 
 		
 		inicioEjecucion = System.nanoTime();
-		ivSequentialblock.ivSequentialblock(matriz1, matriz2, tamanio);
+		vSequentialblock.vSequentialblock(matriz1, matriz2, tamanio);
 		finEjecucion = System.nanoTime();
 		tiempo = (finEjecucion-inicioEjecucion);
-		System.out.println("Tiempo de ejecucion ivSequentialblock: "+tiempo);
-		Utilidades.guardarResultado("ivSequentialblock", tiempo, nombreArchivoResultados);
+		System.out.println("Tiempo de ejecucion vSequentialblock: "+tiempo);
+		Utilidades.guardarResultado("vSequentialblock", tiempo, nombreArchivoResultados);
 		datos.add(tiempo);
 
 

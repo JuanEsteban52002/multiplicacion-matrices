@@ -25,7 +25,7 @@ public class NaivLoopUnrollingThree {
 				C[i][j] = sum;
 			}
 		}
-//		Utilidades.imprimirMatriz(C);
+//	    Utilidades.guardarMatriz(C, "./src/resultados/MatrizResultado(naiveLoopUnrollingThree).txt");
 	}
 	
 	

@@ -230,7 +230,7 @@ public class StrassenWinograd {
 				result[i][j] = aux;
 			}
 		}
-//		Utilidades.imprimirMatriz(result);
+//	    Utilidades.guardarMatriz(result, "./src/resultados/MatrizResultado(StrassenWinograd).txt");
 
 	}
 

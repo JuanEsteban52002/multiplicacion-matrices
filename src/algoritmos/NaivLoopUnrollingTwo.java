@@ -1,5 +1,7 @@
 package algoritmos;
 
+import utilidades.Utilidades;
+
 public class NaivLoopUnrollingTwo {
 
 	//Metodo 4
@@ -28,7 +30,7 @@ public class NaivLoopUnrollingTwo {
                 }
             }
         }
-//        imprimirMatriz(Result);
+//	    Utilidades.guardarMatriz(Result, "./src/resultados/MatrizResultado(naivLoopUnrollingTwo).txt");
     }
 	
 	

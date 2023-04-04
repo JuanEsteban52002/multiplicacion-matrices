@@ -28,8 +28,7 @@ public class IIIParallelBlock {
 	            }
 	        }
 	    });
-//		Utilidades.imprimirMatriz(matrizA);
-
+//	    Utilidades.guardarMatriz(matrizA, "./src/resultados/MatrizResultado(iiiParallelblock).txt");
 	}
 	
 

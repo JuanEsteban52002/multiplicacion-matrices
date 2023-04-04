@@ -33,7 +33,7 @@ public class WinogradOriginal {
 				C[i][j] = dotProduct - rowFactors[i] - colFactors[j] + A[i][n-1] * B[n-1][j];
 			}
 		}
-//		Utilidades.imprimirMatriz(C);
+//	    Utilidades.guardarMatriz(C, "./src/resultados/MatrizResultado(winogradOriginal).txt");
 	}
 
 

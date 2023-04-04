@@ -20,7 +20,7 @@ public class NaivKahan {
 				Result[i][j] = sum;
 			}
 		}
-		//		Utilidades.imprimirMatriz(Result);
+//	    Utilidades.guardarMatriz(Result, "./src/resultados/MatrizResultado(naivKahan).txt");
 	}
 
 

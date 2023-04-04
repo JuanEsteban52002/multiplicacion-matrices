@@ -76,6 +76,6 @@ public class WinogradScaled {
 				}
 			}
 		}
-//		Utilidades.imprimirMatriz(Result);
+//	    Utilidades.guardarMatriz(Result, "./src/resultados/MatrizResultado(winogradScaled).txt");
 	}
 }

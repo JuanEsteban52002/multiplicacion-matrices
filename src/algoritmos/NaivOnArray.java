@@ -15,7 +15,7 @@ public class NaivOnArray {
 				}
 			}
 		}
-//		Utilidades.imprimirMatriz(Result);
+//	    Utilidades.guardarMatriz(Result, "./src/resultados/MatrizResultado(naivOnArray).txt");
 	}
 	
 

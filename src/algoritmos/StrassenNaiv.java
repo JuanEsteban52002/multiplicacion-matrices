@@ -231,7 +231,7 @@ public class StrassenNaiv {
 				result[i][j] = aux;
 			}
 		}
-//		Utilidades.imprimirMatriz(result);
+//	    Utilidades.guardarMatriz(result, "./src/resultados/MatrizResultado(StrassenNaiv).txt");
 
 	}
 

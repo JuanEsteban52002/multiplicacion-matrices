@@ -56,7 +56,7 @@ public class NaivLoopUnrollingFour {
 			}
 		}
 
-//		Utilidades.imprimirMatriz(Result);
+//	    Utilidades.guardarMatriz(Result, "./src/resultados/MatrizResultado(naivLoopUnrollingFour).txt");
 	}
 
 

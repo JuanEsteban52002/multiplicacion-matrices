@@ -27,7 +27,7 @@ public class VParallelBlock {
                 }
             }
         });
-//		Utilidades.imprimirMatriz(matrizA);
+//	    Utilidades.guardarMatriz(matrizA, "./src/resultados/MatrizResultado(vParallelBlock).txt");
 	}
 
 }
