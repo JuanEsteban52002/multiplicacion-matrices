@@ -97,8 +97,6 @@ public class Utilidades {
        
        System.out.println("El rango entre los datos es: " + rango);
   
-
-		
 	}
 	
     public static ArrayList<Long> ordenarDeMayorAMenor(ArrayList<Long> datos) {
