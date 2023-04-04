@@ -113,8 +113,6 @@ public class Utilidades {
        
 	return rango;
   
-
-		
 	}
 	
     public static ArrayList<Long> ordenarDeMayorAMenor(ArrayList<Long> datos) {
