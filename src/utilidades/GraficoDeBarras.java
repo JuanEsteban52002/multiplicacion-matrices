@@ -18,8 +18,6 @@ public class GraficoDeBarras {
 	}
 	public static void main(String[] args) throws IOException {
 
-//		int tamanio = 4;
-
 		String nombreArchivoResultados = "./src/resultados/TiempoPromedio.txt";
 
 		ArrayList<String> temp = new ArrayList<>();
@@ -38,7 +36,6 @@ public class GraficoDeBarras {
 
 		}
 		
-//		System.out.println(cadenaTiempos[0]);
 
 
 

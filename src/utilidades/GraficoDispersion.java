@@ -1,7 +1,12 @@
 package utilidades;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -23,65 +28,110 @@ public class GraficoDispersion {
 
 	public static void main(String[] args) throws Exception {
 
-		String nombreArchivoResultados = "./src/resultados/TiempoPromedio.txt";
 
-		ArrayList<String> temp = new ArrayList<>();
-//		int[] tamanio = {4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192};
+		ArrayList<String> naivStandard  = Utilidades.leerArchivo("./src/tiemposIndividuales/naivStandard");
+		ArrayList<String> naivOnArray  = Utilidades.leerArchivo("./src/tiemposIndividuales/naivOnArray");
+		ArrayList<String> naivKahan  = Utilidades.leerArchivo("./src/tiemposIndividuales/naivKahan");
+		ArrayList<String> naivLoopUnrollingTwo = Utilidades.leerArchivo("./src/tiemposIndividuales/naivLoopUnrollingTwo");
+		ArrayList<String> naiveLoopUnrollingThree  = Utilidades.leerArchivo("./src/tiemposIndividuales/naiveLoopUnrollingThree");
+		ArrayList<String> naivLoopUnrollingFour  = Utilidades.leerArchivo("./src/tiemposIndividuales/naivLoopUnrollingFour");
+		ArrayList<String> winogradOriginal  = Utilidades.leerArchivo("./src/tiemposIndividuales/winogradOriginal");
+		ArrayList<String> winogradScaled  = Utilidades.leerArchivo("./src/tiemposIndividuales/winogradScaled");
+		ArrayList<String> StrassenNaiv  = Utilidades.leerArchivo("./src/tiemposIndividuales/StrassenNaiv");
+		ArrayList<String> StrassenWinograd  = Utilidades.leerArchivo("./src/tiemposIndividuales/StrassenWinograd");
+		ArrayList<String> iiisequentianblock  = Utilidades.leerArchivo("./src/tiemposIndividuales/iiisequentianblock");
+		ArrayList<String> iiiParallelblock  = Utilidades.leerArchivo("./src/tiemposIndividuales/iiiParallelblock");
+		ArrayList<String> ivSequentialblock  = Utilidades.leerArchivo("./src/tiemposIndividuales/ivSequentialblock");
+		ArrayList<String> ivParallelBlock  = Utilidades.leerArchivo("./src/tiemposIndividuales/ivParallelBlock");
+		ArrayList<String> vSequentialblock  = Utilidades.leerArchivo("./src/tiemposIndividuales/vSequentialblock");
+		ArrayList<String> naivStavParallelBlockndard  = Utilidades.leerArchivo("./src/tiemposIndividuales/vParallelBlock");
 
-		temp = Utilidades.leerArchivo(nombreArchivoResultados);
 
-		String[] contenidoArchivo = temp.toArray(new String[temp.size()]);
-		
-		long[] cadenaTiempos = new long[16]; // el tamaño es 16, ya que sabemos que no tenemos mas de esos algoritmos
-		
-		for (int i = 0; i < contenidoArchivo.length; i++) {
-			//Promedios de tiempo de ejecucion de cada algoritmo
-			cadenaTiempos[i] = Long.parseLong(Utilidades.separarCadena2(contenidoArchivo[i]));
-			
-		}
-		
-		
-		
 
-			
-		
-		
-		
-		
 
-		XYDataset dataset = crearDataset(cadenaTiempos);
+		XYDataset dataset = crearDataset(naivStandard);
 		JFreeChart chart = crearGrafico(dataset);
-		guardarGrafico(chart, "Grafico de dispersion.png");
-
-
-
-
+		guardarGrafico(chart, "Grafico de dispersion naivStandard.png");
+		
+		XYDataset dataset2 = crearDataset(naivOnArray);
+		JFreeChart chart2 = crearGrafico(dataset2);
+		guardarGrafico(chart2, "Grafico de dispersion naivOnArray.png");
+		
+		XYDataset dataset3 = crearDataset(naivOnArray);
+		JFreeChart chart3 = crearGrafico(dataset3);
+		guardarGrafico(chart3, "Grafico de dispersion naivKahan.png");
+		
+		XYDataset dataset4 = crearDataset(naivOnArray);
+		JFreeChart chart4 = crearGrafico(dataset4);
+		guardarGrafico(chart4, "Grafico de dispersion naivLoopUnrollingTwo.png");
+		
+		XYDataset dataset5 = crearDataset(naivOnArray);
+		JFreeChart chart5 = crearGrafico(dataset5);
+		guardarGrafico(chart5, "Grafico de dispersion naiveLoopUnrollingThree.png");
+		
+		XYDataset dataset6 = crearDataset(naivOnArray);
+		JFreeChart chart6 = crearGrafico(dataset6);
+		guardarGrafico(chart6, "Grafico de dispersion naivLoopUnrollingFour.png");
+		
+		XYDataset dataset7 = crearDataset(naivOnArray);
+		JFreeChart chart7 = crearGrafico(dataset7);
+		guardarGrafico(chart7, "Grafico de dispersion winogradOriginal.png");
+		
+		XYDataset dataset16 = crearDataset(naivOnArray);
+		JFreeChart chart16 = crearGrafico(dataset16);
+		guardarGrafico(chart16, "Grafico de dispersion winogradScaled.png");
+		
+		XYDataset dataset8 = crearDataset(naivOnArray);
+		JFreeChart chart8 = crearGrafico(dataset8);
+		guardarGrafico(chart8, "Grafico de dispersion StrassenNaiv.png");
+		
+		XYDataset dataset9 = crearDataset(naivOnArray);
+		JFreeChart chart9 = crearGrafico(dataset9);
+		guardarGrafico(chart9, "Grafico de dispersion StrassenWinograd.png");
+		
+		XYDataset dataset10 = crearDataset(naivOnArray);
+		JFreeChart chart10 = crearGrafico(dataset10);
+		guardarGrafico(chart10, "Grafico de dispersion iiisequentianblock.png");
+		
+		XYDataset dataset11 = crearDataset(naivOnArray);
+		JFreeChart chart11 = crearGrafico(dataset11);
+		guardarGrafico(chart11, "Grafico de dispersion iiiParallelblock.png");
+		
+		XYDataset dataset12 = crearDataset(naivOnArray);
+		JFreeChart chart12 = crearGrafico(dataset12);
+		guardarGrafico(chart12, "Grafico de dispersion ivSequentialblock.png");
+		
+		XYDataset dataset13 = crearDataset(naivOnArray);
+		JFreeChart chart13 = crearGrafico(dataset13);
+		guardarGrafico(chart13, "Grafico de dispersion ivParallelBlock.png");
+		
+		XYDataset dataset14 = crearDataset(naivOnArray);
+		JFreeChart chart14 = crearGrafico(dataset14);
+		guardarGrafico(chart14, "Grafico de dispersion vSequentialblock.png");
+		
+		XYDataset dataset15 = crearDataset(naivOnArray);
+		JFreeChart chart15 = crearGrafico(dataset15);
+		guardarGrafico(chart15, "Grafico de dispersion vParallelBlock.png");
 
 	}
 
-	private static XYDataset crearDataset(long[] cadenaTiempos) {
+
+
+	private static XYDataset crearDataset(ArrayList<String> tiempos) {
 		XYSeriesCollection dataset = new XYSeriesCollection();
 		XYSeries serie = new XYSeries("Tiempo promedio de ejecucion por algoritmo");
-		Long temp;
-		
-		
-//		for (int i = 0; i < cadenaTiempos.length; i++) {
 
-//			temp = cadenaTiempos[i];
-			serie.add(4, cadenaTiempos[0]);
-			serie.add(8, cadenaTiempos[1]);
-			serie.add(16, cadenaTiempos[2]);
-			serie.add(32, cadenaTiempos[3]);
-			serie.add(64, cadenaTiempos[4]);
-			serie.add(128, cadenaTiempos[5]);
-			serie.add(256, cadenaTiempos[6]);
-			serie.add(512, cadenaTiempos[7]);
-			serie.add(1024, cadenaTiempos[8]);
-			serie.add(2048, cadenaTiempos[9]);
-			serie.add(4096, cadenaTiempos[10]);
-			serie.add(8192, cadenaTiempos[11]);
-			
-//		}
+		String[] contenidoString = tiempos.toArray(new String[tiempos.size()]);
+		long contenidoArchivo;
+		int tamanio = 4;
+
+		for (int i = 0; i < contenidoString.length; i++) {
+			contenidoArchivo = Long.parseLong(contenidoString[i]);
+
+
+			serie.add(tamanio, contenidoArchivo);
+			tamanio*=2;
+		}
 		dataset.addSeries(serie);
 		return dataset;
 	}

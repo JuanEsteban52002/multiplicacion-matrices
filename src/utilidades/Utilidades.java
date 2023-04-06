@@ -27,6 +27,17 @@ public class Utilidades {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void guardarResultado2(long tiempo, String nombreArchivo) {
+		try {
+			FileWriter archivo = new FileWriter(nombreArchivo, true); // true para abrir en modo de append
+			archivo.write(tiempo + "\n"); // agregar el resultado y el parametro adicional al final del archivo
+			archivo.close(); // cerrar el archivo
+		} catch (IOException e) {
+			System.out.println("Ha ocurrido un error al guardar el resultado en el archivo.");
+			e.printStackTrace();
+		}
+	}
 
 	public static void guardarEstadisticos( double media, double varianza, double desviacionEstandar, double rango,  String nombreArchivo) {
 		try {
