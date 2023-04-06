@@ -6,3 +6,11 @@ naiveLoopUnrollingThree-5630885821300
 naivLoopUnrollingFour-5545659118000
 winogradOriginal-5638634454300
 winogradScaled-5635373890300
+StrassenNaiv-5575122352200
+StrassenWinograd-5515689212100
+iiisequentianblock-1820139064200
+iiiParallelblock-1569080757800
+ivSequentialblock-142485893300
+ivParallelBlock-128966722900
+vSequentialblock-1895084461100
+vParallelBlock-1812969289600

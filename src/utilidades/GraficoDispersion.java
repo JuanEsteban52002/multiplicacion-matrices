@@ -1,6 +1,12 @@
 package utilidades;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Scanner;
+
+import javax.xml.transform.Templates;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartUtilities;
@@ -13,34 +19,92 @@ import org.jfree.data.xy.XYSeriesCollection;
 
 public class GraficoDispersion {
 
+
+
 	public static void main(String[] args) throws Exception {
-		XYDataset dataset = crearDataset();
-		JFreeChart chart = crearGrafico(dataset);
-		guardarGrafico(chart, "grafico_dispersion.png");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		//		int tamanio = 4;
+		//		String[] datos = new String[11];
+		////		ArrayList<String> temp = new ArrayList<>();
+		//		String[] temp = new String[15];
+		//		String archivoIndividual; 
+		//
+		//		for (int i = 0; i <= 11; i++) {
+		//			
+		//			String nombreArchivoResultados = "./src/resultados/Tiempos de Ejecucion "+ tamanio  +".txt";
+		//
+		//			archivoIndividual = Utilidades.leerArchivo(nombreArchivoResultados);
+		//			
+		//			
+		//			
+		//			tamanio *=2;
+		//
+		//		}
+		//		
+		//	
+		//		
+		//		System.out.println(temp.get(1));
+
+
+
+
+		//			String[] contenidoArchivo = temp.toArray(new String[temp.size()]);
+		//			
+		//			String linea = contenidoArchivo[i]; //necesito 16 i´s pero solamente tengo 12 (buscar solucion)
+		//			
+		//			String nombre = Utilidades.separarCadena1(linea);
+		//			
+		//			datos[i] = Utilidades.separarCadena2(linea);
+		//			
+		//			System.out.println(datos[i]);
+
+		//			XYDataset dataset = crearDataset(datos, nombre, tamanio);
+		//			JFreeChart chart = crearGrafico(dataset);
+		//			guardarGrafico(chart, nombre + ".png");
+		//			guardarGrafico(chart, "ejemplo.png");
+
+
+
+
+
 	}
 
-	private static XYDataset crearDataset() {
+	private static XYDataset crearDataset(String[] datos, String nombre, int tamanio) {
 		XYSeriesCollection dataset = new XYSeriesCollection();
-		XYSeries serie = new XYSeries("Datos de ejemplo");
-		serie.add(4, 1);
-		serie.add(8, 2);
-		serie.add(16, 3);
-		serie.add(32, 4);
-		serie.add(64, 5);
-		serie.add(128, 5);
-		serie.add(256, 5);
-		serie.add(512, 5);
-		serie.add(1024, 5);
-		serie.add(2048, 5);
-		serie.add(4096, 5);
-		serie.add(8192, 5);
+		XYSeries serie = new XYSeries(nombre);
+		Long temp;
+		for (int i = 0; i < datos.length; i++) {
 
-
+			temp = Long.parseLong(datos[i]);
+			serie.add(tamanio, temp);
+		}
 		dataset.addSeries(serie);
 		return dataset;
 	}
 
-	
+
 
 	private static JFreeChart crearGrafico(XYDataset dataset) {
 		JFreeChart chart = ChartFactory.createScatterPlot(

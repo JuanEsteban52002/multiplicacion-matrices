@@ -156,22 +156,22 @@ public class Main {
 		datos.add(tiempo);
 
 		
-		inicioEjecucion = System.nanoTime();
-		strassenNaiv.StrassenNaiv(matriz1, matriz2, resultado, N, P, M);
-		finEjecucion = System.nanoTime();
-		tiempo = (finEjecucion-inicioEjecucion);
-		System.out.println("Tiempo de ejecucion StrassenNaiv: "+tiempo);
-		Utilidades.guardarResultado("StrassenNaiv", tiempo, nombreArchivoResultados);
-		datos.add(tiempo);
-
-		
-		inicioEjecucion = System.nanoTime();
-		StrassenWinograd.StrassenWinograd(matriz1, matriz2, resultado, N, P, M);
-		finEjecucion = System.nanoTime();
-		tiempo = (finEjecucion-inicioEjecucion);
-		System.out.println("Tiempo de ejecucion StrassenWinograd: "+tiempo);
-		Utilidades.guardarResultado("StrassenWinograd", tiempo, nombreArchivoResultados);
-		datos.add(tiempo);
+//		inicioEjecucion = System.nanoTime();
+//		strassenNaiv.StrassenNaiv(matriz1, matriz2, resultado, N, P, M);
+//		finEjecucion = System.nanoTime();
+//		tiempo = (finEjecucion-inicioEjecucion);
+//		System.out.println("Tiempo de ejecucion StrassenNaiv: "+tiempo);
+//		Utilidades.guardarResultado("StrassenNaiv", tiempo, nombreArchivoResultados);
+//		datos.add(tiempo);
+//
+//		
+//		inicioEjecucion = System.nanoTime();
+//		StrassenWinograd.StrassenWinograd(matriz1, matriz2, resultado, N, P, M);
+//		finEjecucion = System.nanoTime();
+//		tiempo = (finEjecucion-inicioEjecucion);
+//		System.out.println("Tiempo de ejecucion StrassenWinograd: "+tiempo);
+//		Utilidades.guardarResultado("StrassenWinograd", tiempo, nombreArchivoResultados);
+//		datos.add(tiempo);
 
 		
 		inicioEjecucion = System.nanoTime();
@@ -234,15 +234,24 @@ public class Main {
 
 		
 		//Requerimiento 6:
-		double media = Utilidades.calcularMedia(datos);
-        double varianza = Utilidades.calcularVarianza(datos, media);
-        double desviacionEstandar = Math.sqrt(varianza);
-        System.out.println("La Desviacion Estandar es: " + desviacionEstandar);
-		double rengo = Utilidades.calcularRango(datos);
-		Utilidades.guardarEstadisticos(media, varianza, desviacionEstandar, rengo, nombreArchivoEstadisticos);
+//		double media = Utilidades.calcularMedia(datos);
+//        double varianza = Utilidades.calcularVarianza(datos, media);
+//        double desviacionEstandar = Math.sqrt(varianza);
+//        System.out.println("La Desviacion Estandar es: " + desviacionEstandar);
+//		double rengo = Utilidades.calcularRango(datos);
+//		Utilidades.guardarEstadisticos(media, varianza, desviacionEstandar, rengo, nombreArchivoEstadisticos);
 		
 
-
+		
+		//Requerimiento 4
+//		Utilidades.calcularPromedio();
+		
+		//Requerimiento 5:
+		//Clase que se llama requerimiento 5
+		
+		//Requerimiento 6:
+		Utilidades.calcularEstadisticos();
+		
 		
 		
 	

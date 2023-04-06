@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartUtilities;
@@ -11,21 +13,34 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 
-public class GraficoDeBarras {
+public class Requerimiento5 {
 
-	public GraficoDeBarras() {
+	public Requerimiento5() {
 
 	}
+	
 	public static void main(String[] args) throws IOException {
+		
 
-//		int tamanio = 4;
-
-		String nombreArchivoResultados = "./src/resultados/TiempoPromedio.txt";
-
+		String ruta = "./src/resultados/Tiempos de Ejecucion 8192.txt";
+		
 		ArrayList<String> temp = new ArrayList<>();
+		
+		temp = Utilidades.leerArchivo(ruta);
+		
+		Comparator<String> comparador = new Comparator<String>() {
+		    @Override
+		    public int compare(String s1, String s2) {
+		        long num1 = Long.parseLong(s1.replaceAll("\\D", ""));
+		        long num2 = Long.parseLong(s2.replaceAll("\\D", ""));
+		        return Long.compare(num1, num2);
+		    }
+		};
 
-		temp = Utilidades.leerArchivo(nombreArchivoResultados);
-
+		Collections.sort(temp, comparador);
+		
+//		System.out.println(temp);
+		
 		String[] contenidoArchivo = temp.toArray(new String[temp.size()]);
 		
 		long[] cadenaTiempos = new long[16]; // el tamaño es 16, ya que sabemos que no tenemos mas de esos algoritmos
@@ -38,9 +53,6 @@ public class GraficoDeBarras {
 
 		}
 		
-//		System.out.println(cadenaTiempos[0]);
-
-
 
 		// Crear un conjunto de datos para el gr�fico 
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
@@ -67,9 +79,11 @@ public class GraficoDeBarras {
 		chart.setBackgroundPaint(Color.white);
 
 		// Guardar el gr�fico en un archivo PNG
-		File archivo = new File("Promedio de tiempo de ejecucion de los algoritmos.png");
+		File archivo = new File("Oeden creciente los tiempos de ejecución.png");
 		ChartUtilities.saveChartAsPNG(archivo, chart, 1200, 800);
 	}
+	
+
 	
 	
 	
