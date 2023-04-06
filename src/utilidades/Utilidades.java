@@ -425,17 +425,7 @@ public class Utilidades {
 	
 	}
 	
-	
-	public static long[] obtenerTiemposAlgoritmos() {
 
-		
-		
-		return null;
-	}
-	
-	
-	
-	
 	
 	public static void calcularEstadisticos() {
 		
@@ -464,6 +454,8 @@ public class Utilidades {
 		}
 		
 	}
+	
+
 
 }
 

@@ -234,12 +234,12 @@ public class Main {
 
 		
 		//Requerimiento 6:
-//		double media = Utilidades.calcularMedia(datos);
-//        double varianza = Utilidades.calcularVarianza(datos, media);
-//        double desviacionEstandar = Math.sqrt(varianza);
-//        System.out.println("La Desviacion Estandar es: " + desviacionEstandar);
-//		double rengo = Utilidades.calcularRango(datos);
-//		Utilidades.guardarEstadisticos(media, varianza, desviacionEstandar, rengo, nombreArchivoEstadisticos);
+		double media = Utilidades.calcularMedia(datos);
+        double varianza = Utilidades.calcularVarianza(datos, media);
+        double desviacionEstandar = Math.sqrt(varianza);
+        System.out.println("La Desviacion Estandar es: " + desviacionEstandar);
+		double rengo = Utilidades.calcularRango(datos);
+		Utilidades.guardarEstadisticos(media, varianza, desviacionEstandar, rengo, nombreArchivoEstadisticos);
 		
 
 		
@@ -248,11 +248,7 @@ public class Main {
 		
 		//Requerimiento 5:
 		//Clase que se llama requerimiento 5
-		
-		//Requerimiento 6:
-		Utilidades.calcularEstadisticos();
-		
-		
+			
 		
 	
 

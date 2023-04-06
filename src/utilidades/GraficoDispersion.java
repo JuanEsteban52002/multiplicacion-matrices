@@ -23,67 +23,35 @@ public class GraficoDispersion {
 
 	public static void main(String[] args) throws Exception {
 
+		String nombreArchivoResultados = "./src/resultados/TiempoPromedio.txt";
 
+		ArrayList<String> temp = new ArrayList<>();
+//		int[] tamanio = {4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192};
 
+		temp = Utilidades.leerArchivo(nombreArchivoResultados);
 
+		String[] contenidoArchivo = temp.toArray(new String[temp.size()]);
+		
+		long[] cadenaTiempos = new long[16]; // el tamaño es 16, ya que sabemos que no tenemos mas de esos algoritmos
+		
+		for (int i = 0; i < contenidoArchivo.length; i++) {
+			//Promedios de tiempo de ejecucion de cada algoritmo
+			cadenaTiempos[i] = Long.parseLong(Utilidades.separarCadena2(contenidoArchivo[i]));
+			
+		}
+		
+		
+		
 
+			
+		
+		
+		
+		
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		//		int tamanio = 4;
-		//		String[] datos = new String[11];
-		////		ArrayList<String> temp = new ArrayList<>();
-		//		String[] temp = new String[15];
-		//		String archivoIndividual; 
-		//
-		//		for (int i = 0; i <= 11; i++) {
-		//			
-		//			String nombreArchivoResultados = "./src/resultados/Tiempos de Ejecucion "+ tamanio  +".txt";
-		//
-		//			archivoIndividual = Utilidades.leerArchivo(nombreArchivoResultados);
-		//			
-		//			
-		//			
-		//			tamanio *=2;
-		//
-		//		}
-		//		
-		//	
-		//		
-		//		System.out.println(temp.get(1));
-
-
-
-
-		//			String[] contenidoArchivo = temp.toArray(new String[temp.size()]);
-		//			
-		//			String linea = contenidoArchivo[i]; //necesito 16 i´s pero solamente tengo 12 (buscar solucion)
-		//			
-		//			String nombre = Utilidades.separarCadena1(linea);
-		//			
-		//			datos[i] = Utilidades.separarCadena2(linea);
-		//			
-		//			System.out.println(datos[i]);
-
-		//			XYDataset dataset = crearDataset(datos, nombre, tamanio);
-		//			JFreeChart chart = crearGrafico(dataset);
-		//			guardarGrafico(chart, nombre + ".png");
-		//			guardarGrafico(chart, "ejemplo.png");
+		XYDataset dataset = crearDataset(cadenaTiempos);
+		JFreeChart chart = crearGrafico(dataset);
+		guardarGrafico(chart, "Grafico de dispersion.png");
 
 
 
@@ -91,15 +59,29 @@ public class GraficoDispersion {
 
 	}
 
-	private static XYDataset crearDataset(String[] datos, String nombre, int tamanio) {
+	private static XYDataset crearDataset(long[] cadenaTiempos) {
 		XYSeriesCollection dataset = new XYSeriesCollection();
-		XYSeries serie = new XYSeries(nombre);
+		XYSeries serie = new XYSeries("Tiempo promedio de ejecucion por algoritmo");
 		Long temp;
-		for (int i = 0; i < datos.length; i++) {
+		
+		
+//		for (int i = 0; i < cadenaTiempos.length; i++) {
 
-			temp = Long.parseLong(datos[i]);
-			serie.add(tamanio, temp);
-		}
+//			temp = cadenaTiempos[i];
+			serie.add(4, cadenaTiempos[0]);
+			serie.add(8, cadenaTiempos[1]);
+			serie.add(16, cadenaTiempos[2]);
+			serie.add(32, cadenaTiempos[3]);
+			serie.add(64, cadenaTiempos[4]);
+			serie.add(128, cadenaTiempos[5]);
+			serie.add(256, cadenaTiempos[6]);
+			serie.add(512, cadenaTiempos[7]);
+			serie.add(1024, cadenaTiempos[8]);
+			serie.add(2048, cadenaTiempos[9]);
+			serie.add(4096, cadenaTiempos[10]);
+			serie.add(8192, cadenaTiempos[11]);
+			
+//		}
 		dataset.addSeries(serie);
 		return dataset;
 	}
@@ -109,8 +91,8 @@ public class GraficoDispersion {
 	private static JFreeChart crearGrafico(XYDataset dataset) {
 		JFreeChart chart = ChartFactory.createScatterPlot(
 				"Grafico de dispersion", // Titulo
-				"Eje X", // Etiqueta del eje X
-				"Eje Y", // Etiqueta del eje Y
+				"Tamaño matrices", // Etiqueta del eje X
+				"Tiempos de ejecuacion", // Etiqueta del eje Y
 				dataset, // Conjunto de datos
 				PlotOrientation.VERTICAL, // Orientaci�n del gr�fico
 				true, // Leyenda

@@ -35,7 +35,9 @@ public class Pruebas {
 			System.out.println(cadenaTiempos[i]);
 		}
 		
-		tiemposAlgoritmos = Utilidades.obtenerTiemposAlgoritmos();
+		
+		
+		
 		
 		
 		
