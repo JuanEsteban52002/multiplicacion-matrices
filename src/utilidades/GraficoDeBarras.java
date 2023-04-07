@@ -17,6 +17,8 @@ public class GraficoDeBarras {
 
 	}
 	public static void main(String[] args) throws IOException {
+		
+		//Requerimiento 4
 
 		String nombreArchivoResultados = "./src/resultados/TiempoPromedio.txt";
 
