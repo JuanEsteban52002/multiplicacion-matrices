@@ -11,9 +11,9 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 
-public class GraficoDeBarras {
+public class Requerimiento4 {
 
-	public GraficoDeBarras() {
+	public Requerimiento4() {
 
 	}
 	public static void main(String[] args) throws IOException {
@@ -53,7 +53,7 @@ public class GraficoDeBarras {
 
 		// Crear el gr�fico de barras
 		JFreeChart chart = ChartFactory.createBarChart(
-				"Tiempos de ejecucion",
+				"Promedio de tiempo de ejecucion de los algoritmos",
 				"Algoritmos",
 				"Tiempo (ms)",
 				dataset,

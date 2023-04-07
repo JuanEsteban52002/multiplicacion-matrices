@@ -66,7 +66,7 @@ public class Requerimiento5 {
 
 		// Crear el gr�fico de barras
 		JFreeChart chart = ChartFactory.createBarChart(
-				"Tiempos de ejecucion",
+				"Oeden creciente los tiempos de ejecución",
 				"Algoritmos",
 				"Tiempo (ms)",
 				dataset,

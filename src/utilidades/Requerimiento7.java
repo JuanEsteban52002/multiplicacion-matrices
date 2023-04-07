@@ -22,7 +22,7 @@ import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
-public class GraficoDispersion {
+public class Requerimiento7 {
 
 
 
@@ -140,7 +140,7 @@ public class GraficoDispersion {
 
 	private static JFreeChart crearGrafico(XYDataset dataset) {
 		JFreeChart chart = ChartFactory.createScatterPlot(
-				"Grafico de dispersion", // Titulo
+				"Grafico de dispersion de los algoritmos con respecto a los tamaños de la matrices.", // Titulo
 				"Tamaño matrices", // Etiqueta del eje X
 				"Tiempos de ejecuacion", // Etiqueta del eje Y
 				dataset, // Conjunto de datos

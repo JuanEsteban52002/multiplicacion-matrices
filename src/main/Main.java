@@ -26,12 +26,38 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
+		/*
+		 * En el paquete matrices se guardan las matrices que se generan para
+		 * probar los algoritmos, por motivos de peso del proyecto y de subir los
+		 * archivos a github las matrices generadas las eliminamos, en el paquete unicamente
+		 * se encuentran las matrices mas pequeñas.
+		 */
+		
+		/*
+		 * En el paquete resultados se encuentran los tiempos de ejecucion
+		 * de los algoritmos por cada tamaño de matriz.
+		 */
+		
+		
+		/*
+		 * En el paquete tiemposIndividuales se encuentran los tienpos por algoritmo
+		 * en cada una de las ejecuciones con los diferentes tamaños de matrices.
+		 */
+		
+		/*
+		 * Los requerimientos 4, 5, 6 y 7 se encuentran en main´s separados
+		 * en un paquete llamado utilidades.
+		 */
+		
+		/*
+		 * Los archivos .png que se encuentan por fuera de src son las graficas que
+		 * se generan en los requerimientos 4, 5, 6 y 7.
+		 */
+		
+
+		
 		long inicioEjecucion, finEjecucion, tiempo;
-		
 
-		
-
-		
 		//Declaracion de todos los objetos para ejecutar cada uno de los algoritmos
 		
 		NaivStandard naivStandard = new NaivStandard();
@@ -61,9 +87,7 @@ public class Main {
 		int P = tamanio;
 		int M = tamanio;
 		String nombreArchivoResultados = "./src/resultados/Tiempos de Ejecucion "+ tamanio +".txt";
-		String nombreArchivoEstadisticos = "./src/resultados/Estadisticos "+ tamanio +".txt";
-		ArrayList<Long> datos = new ArrayList<>();
-		
+		String nombreArchivoEstadisticos = "./src/resultados/Estadisticos "+ tamanio +".txt";		
 		
 
 		
@@ -74,11 +98,14 @@ public class Main {
         int[][] matriz1 = Utilidades.generarMatriz(tamanio);
         int[][] matriz2 = Utilidades.generarMatriz(tamanio);
 
+        
         // Guardar la matriz en un archivo
         Utilidades.guardarMatriz(matriz1, "./src/matrices/Matriz1 ("+ tamanio + ").txt");
         Utilidades.guardarMatriz(matriz2, "./src/matrices/Matriz2 ("+ tamanio + ").txt");
 
 			
+        
+        //Ejecucion de cada algoritmo
 		inicioEjecucion = System.nanoTime();
 		naivStandard.naivStandard(matriz1, matriz2, resultado, N, P, M);
 		finEjecucion = System.nanoTime();
@@ -86,10 +113,7 @@ public class Main {
 		System.out.println("Tiempo de ejecucion naivStandard: "+tiempo);
 		Utilidades.guardarResultado("naivStandard", tiempo, nombreArchivoResultados);
 		Utilidades.guardarResultado2(tiempo, "./src/tiemposIndividuales/naivStandard");
-		
-		datos.add(tiempo);
-		
-		
+
 		
 		inicioEjecucion = System.nanoTime();
 		naivOnArray.naivOnArray(matriz1, matriz2, resultado, N, P, M);
@@ -98,8 +122,6 @@ public class Main {
 		System.out.println("Tiempo de ejecucion naivOnArray: "+tiempo);
 		Utilidades.guardarResultado("naivOnArray", tiempo, nombreArchivoResultados);
 		Utilidades.guardarResultado2(tiempo, "./src/tiemposIndividuales/naivOnArray");
-
-		datos.add(tiempo);
 
 		
 		inicioEjecucion = System.nanoTime();
@@ -110,9 +132,6 @@ public class Main {
 		Utilidades.guardarResultado("naivKahan", tiempo, nombreArchivoResultados);
 		Utilidades.guardarResultado2(tiempo, "./src/tiemposIndividuales/naivKahan");
 
-		datos.add(tiempo);
-
-
 		
 		inicioEjecucion = System.nanoTime();
 		naivLoopUnrollingTwo.naivLoopUnrollingTwo(matriz1, matriz2, resultado, N, P, M);
@@ -121,8 +140,6 @@ public class Main {
 		System.out.println("Tiempo de ejecucion naivLoopUnrollingTwo: "+tiempo);
 		Utilidades.guardarResultado("naivLoopUnrollingTwo", tiempo, nombreArchivoResultados);
 		Utilidades.guardarResultado2(tiempo, "./src/tiemposIndividuales/naivLoopUnrollingTwo");
-
-		datos.add(tiempo);
 
 
 		
@@ -133,9 +150,6 @@ public class Main {
 		System.out.println("Tiempo de ejecucion naiveLoopUnrollingThree: "+tiempo);
 		Utilidades.guardarResultado("naiveLoopUnrollingThree", tiempo, nombreArchivoResultados);
 		Utilidades.guardarResultado2(tiempo, "./src/tiemposIndividuales/naiveLoopUnrollingThree");
-
-		datos.add(tiempo);
-
 		
 		
 		inicioEjecucion = System.nanoTime();
@@ -146,9 +160,7 @@ public class Main {
 		Utilidades.guardarResultado("naivLoopUnrollingFour", tiempo, nombreArchivoResultados);
 		Utilidades.guardarResultado2(tiempo, "./src/tiemposIndividuales/naivLoopUnrollingFour");
 
-		datos.add(tiempo);
 
-		
 		
 		inicioEjecucion = System.nanoTime();
 		winogradOriginal.winogradOriginal(matriz1, matriz2);
@@ -158,7 +170,6 @@ public class Main {
 		Utilidades.guardarResultado("winogradOriginal", tiempo, nombreArchivoResultados);
 		Utilidades.guardarResultado2(tiempo, "./src/tiemposIndividuales/winogradOriginal");
 
-		datos.add(tiempo);
 
 		
 		inicioEjecucion = System.nanoTime();
@@ -168,8 +179,6 @@ public class Main {
 		System.out.println("Tiempo de ejecucion winogradScaled: "+tiempo);		
 		Utilidades.guardarResultado("winogradScaled", tiempo, nombreArchivoResultados);
 		Utilidades.guardarResultado2(tiempo, "./src/tiemposIndividuales/winogradScaled");
-		
-		datos.add(tiempo);
 
 		
 		inicioEjecucion = System.nanoTime();
@@ -180,7 +189,6 @@ public class Main {
 		Utilidades.guardarResultado("StrassenNaiv", tiempo, nombreArchivoResultados);
 		Utilidades.guardarResultado2(tiempo, "./src/tiemposIndividuales/StrassenNaiv");
 
-		datos.add(tiempo);
 
 		
 		inicioEjecucion = System.nanoTime();
@@ -191,7 +199,6 @@ public class Main {
 		Utilidades.guardarResultado("StrassenWinograd", tiempo, nombreArchivoResultados);
 		Utilidades.guardarResultado2(tiempo, "./src/tiemposIndividuales/StrassenWinograd");
 
-		datos.add(tiempo);
 
 		
 		inicioEjecucion = System.nanoTime();
@@ -202,9 +209,6 @@ public class Main {
 		Utilidades.guardarResultado("iiisequentianblock", tiempo, nombreArchivoResultados);
 		Utilidades.guardarResultado2(tiempo, "./src/tiemposIndividuales/iiisequentianblock");
 
-		datos.add(tiempo);
-
-        
         
 		inicioEjecucion = System.nanoTime();
 		iiiParallelBlock.iiiParallelblock(matriz1, matriz2, tamanio);
@@ -214,7 +218,6 @@ public class Main {
 		Utilidades.guardarResultado("iiiParallelblock", tiempo, nombreArchivoResultados);
 		Utilidades.guardarResultado2(tiempo, "./src/tiemposIndividuales/iiiParallelblock");
 
-		datos.add(tiempo);
 
 		
 		inicioEjecucion = System.nanoTime();
@@ -225,7 +228,6 @@ public class Main {
 		Utilidades.guardarResultado("ivSequentialblock", tiempo, nombreArchivoResultados);
 		Utilidades.guardarResultado2(tiempo, "./src/tiemposIndividuales/ivSequentialblock");
 
-		datos.add(tiempo);
 
 		
         
@@ -237,7 +239,6 @@ public class Main {
 		Utilidades.guardarResultado("ivParallelBlock", tiempo, nombreArchivoResultados);
 		Utilidades.guardarResultado2(tiempo, "./src/tiemposIndividuales/ivParallelBlock");
 
-		datos.add(tiempo);
 
 		
 		inicioEjecucion = System.nanoTime();
@@ -248,7 +249,6 @@ public class Main {
 		Utilidades.guardarResultado("vSequentialblock", tiempo, nombreArchivoResultados);
 		Utilidades.guardarResultado2(tiempo, "./src/tiemposIndividuales/vSequentialblock");
 
-		datos.add(tiempo);
 
 
 		inicioEjecucion = System.nanoTime();
@@ -259,41 +259,7 @@ public class Main {
 		Utilidades.guardarResultado("vParallelBlock", tiempo, nombreArchivoResultados);
 		Utilidades.guardarResultado2(tiempo, "./src/tiemposIndividuales/vParallelBlock");
 
-		datos.add(tiempo);
 
-		
-
-		
-		//Requerimiento 6:
-		double media = Utilidades.calcularMedia(datos);
-        double varianza = Utilidades.calcularVarianza(datos, media);
-        double desviacionEstandar = Math.sqrt(varianza);
-        System.out.println("La Desviacion Estandar es: " + desviacionEstandar);
-		double rengo = Utilidades.calcularRango(datos);
-		Utilidades.guardarEstadisticos(media, varianza, desviacionEstandar, rengo, nombreArchivoEstadisticos);
-		
-
-		
-		//Requerimiento 4
-//		Utilidades.calcularPromedio();
-		//Clase que se GraficoDeBarras
-		
-		
-		//Requerimiento 5:
-		//Clase que se llama requerimiento 5
-		
-		
-		//Requerimiento 7:
-		//Tomar cada uno de los archivos en los que estan guardados los tiempos de cada algoritmo
-		
-		
-		
-			
-		
-	
-
-		
-		
 		
 	}
 
